@@ -39,6 +39,7 @@ abstract class BaseMVVMActivity<VB : ViewDataBinding, VM : BaseViewModel>(
         val initVariableId = initVariableId()
         initVariableId?.let {
             bind.setVariable(initVariableId, viewModel)
+            
         }
         //设置沉浸式状态栏
         statusBarColor?.let { color ->
