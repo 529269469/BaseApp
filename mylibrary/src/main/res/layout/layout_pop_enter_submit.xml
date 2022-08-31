@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="299dp"
+    android:layout_height="wrap_content"
+    android:background="@drawable/shape_white_fillet"
+    android:gravity="center_horizontal"
+    android:layout_gravity="center"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tvHintTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:text="温馨提示"
+        android:textColor="#000000"
+        android:textSize="16sp" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvSelectWithdrawal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="26dp"
+        android:layout_marginEnd="25dp"
+        android:scrollbars="none" />
+
+    <TextView
+        android:id="@+id/tvHintContent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="26dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="25dp"
+        android:textColor="#000000"
+        android:textSize="15sp"
+        tools:text="您是第1次提现，\n
+您需要完成APP填写任务，并提交审核，审核费用每次50元，该费用将从你的账户余额中直接扣除。\n
+您的极限APP填写完整了吗？您需要提交审核吗？\n
+您的APP只要审核通过之后，以后提现就不再需要提交审核了。" />
+
+    <TextView
+        android:id="@+id/tvEnterSubmit"
+        android:layout_width="258dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/shape_green_fillet"
+        android:gravity="center"
+        android:text="确认提交"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/tvCancelSubmit"
+        android:layout_width="258dp"
+        android:layout_height="43dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/shape_white_fillet"
+        android:gravity="center"
+        android:text="取消提交"
+        android:textColor="#6b6d74"
+        android:textSize="16sp" />
+</LinearLayout>
