@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/beijing_LinearLayout"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="15dp"
+
+    >
+
+    <ImageView
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:src="@drawable/ic_loading_corcle" />
+
+    <TextView
+        android:id="@+id/tv_loadingmsg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_10"
+        android:gravity="center"
+        android:paddingRight="@dimen/dp_10"
+        android:text="加载中,请稍后..."
+        android:textColor="#fff"
+        android:textSize="15dp" />
+    <!--<pl.droidsonroids.gif.GifImageView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:src="@drawable/xialaxiaog"-->
+    <!--    android:text="加载中，请稍后..."-->
+    <!--/>-->
+
+</LinearLayout>

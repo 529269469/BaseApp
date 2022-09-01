@@ -3,8 +3,16 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/AndroidStudioProjects2/BaseApp/app/src/main/res/drawable/util_toast_bg.xml" value="0.193" />
+        <entry key="..\:/AndroidStudioProjects2/BaseApp/app/src/main/res/layout/activity_main.xml" value="0.3619791666666667" />
+        <entry key="..\:/AndroidStudioProjects2/BaseApp/app/src/main/res/layout/dialog_loading_view.xml" value="0.18489583333333334" />
+        <entry key="..\:/AndroidStudioProjects2/BaseApp/app/src/main/res/layout/layout_adapter_main_list.xml" value="0.29615384615384616" />
+        <entry key="..\:/AndroidStudioProjects2/BaseApp/app/src/main/res/layout/util_toast_view.xml" value="0.18489583333333334" />
+        <entry key="..\:/AndroidStudioProjects2/BaseApp/mylibrary/src/main/res/drawable/util_toast_bg.xml" value="0.193" />
         <entry key="..\:/AndroidStudioProjects2/BaseApp/mylibrary/src/main/res/layout/activity_announcement_ordinance.xml" value="0.18229166666666666" />
         <entry key="..\:/AndroidStudioProjects2/BaseApp/mylibrary/src/main/res/layout/activity_h5.xml" value="0.18229166666666666" />
+        <entry key="..\:/AndroidStudioProjects2/BaseApp/mylibrary/src/main/res/layout/audit_popu_window.xml" value="0.18489583333333334" />
+        <entry key="..\:/AndroidStudioProjects2/BaseApp/mylibrary/src/main/res/layout/dialog_loading_view.xml" value="0.18489583333333334" />
       </map>
     </option>
   </component>
