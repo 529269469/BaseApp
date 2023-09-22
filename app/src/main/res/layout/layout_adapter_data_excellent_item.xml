@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="343dp"
+    android:layout_height="70dp"
+    android:background="@drawable/shape_excellent_20">
+
+    <TextView
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:textSize="13sp"
+        android:id="@+id/tv_adapter_data_excellent_num"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="16dp"
+        android:background="@mipmap/first1" />
+
+    <com.example.psychology.base_app.view.view.CircleImageView
+        android:id="@+id/iv_adapter_data_excellent_head"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="15dp"
+        android:layout_toRightOf="@id/tv_adapter_data_excellent_num"
+        android:src="@mipmap/icon_head11" />
+
+    <TextView
+        android:id="@+id/tv_adapter_data_excellent_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="15dp"
+        android:layout_toRightOf="@id/iv_adapter_data_excellent_head"
+        android:text="June Vargas"
+        android:textColor="@color/black" />
+
+    <TextView
+        android:id="@+id/tv_adapter_data_excellent_tiem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="12dp"
+        android:text="180min"
+        android:textColor="@color/black" />
+
+
+</RelativeLayout>

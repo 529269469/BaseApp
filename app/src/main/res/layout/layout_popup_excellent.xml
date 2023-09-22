@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="444dp"
+    android:layout_height="626dp">
+
+    <RelativeLayout
+        android:layout_width="444dp"
+        android:layout_height="626dp"
+        android:background="@drawable/shape_login_white_20">
+
+
+        <TextView
+            android:id="@+id/tv_excellent_popup_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="24dp"
+            android:text="优秀学员"
+            android:textColor="@color/black"
+            android:textSize="23sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/iv_excellent_popup_x"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="19dp"
+            android:layout_marginEnd="19dp"
+            android:src="@mipmap/xmark" />
+        
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_popup_adapter"
+            android:layout_marginBottom="25dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="78dp"
+            android:layout_width="343dp"
+            android:layout_height="match_parent"/>
+
+    </RelativeLayout>
+</RelativeLayout>

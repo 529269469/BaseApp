@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="51dp">
+
+    <ImageView
+        android:layout_marginStart="16dp"
+        android:layout_gravity="center_vertical"
+        android:src="@mipmap/icon_record3"
+        android:layout_width="14dp"
+        android:layout_height="14dp"/>
+
+    <TextView
+        android:id="@+id/tv_relax_search_title"
+        android:text="基础的冥想练习法"
+        android:textColor="@color/color_323232"
+        android:textSize="20sp"
+        android:layout_marginStart="34dp"
+        android:layout_gravity="center_vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>

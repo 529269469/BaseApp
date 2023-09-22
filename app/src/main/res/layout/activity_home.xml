@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="home"
+            type="com.example.psychology.base_app.base.BaseViewModel" />
+    </data>
+
+    <LinearLayout
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.HomeActivity">
+
+
+        <RelativeLayout
+            android:orientation="vertical"
+            android:layout_width="198dp"
+            android:layout_height="match_parent">
+            
+            <ImageView
+                android:layout_marginLeft="-181dp"
+                android:layout_marginTop="-322dp"
+                android:src="@mipmap/ellipse1"
+                android:layout_width="420dp"
+                android:layout_height="420dp"/>
+
+            <ImageView
+                android:id="@+id/iv_home_head"
+                android:layout_marginStart="14dp"
+                android:layout_marginTop="14dp"
+                android:src="@mipmap/icon_head11"
+                android:layout_width="46dp"
+                android:layout_height="46dp"/>
+
+            <TextView
+                android:id="@+id/tv_home_name"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:text="Jonathan"
+                android:layout_marginTop="25dp"
+                android:layout_marginStart="72dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/tv_home_title"
+                android:textSize="15sp"
+                android:gravity="center_vertical"
+                android:padding="13dp"
+                android:textColor="@color/white"
+                android:text="Hi~上午好！\n开始您的专属训练吧"
+                android:layout_marginTop="86dp"
+                android:layout_centerHorizontal="true"
+                android:background="@mipmap/icon_home_hello"
+                android:layout_width="164dp"
+                android:layout_height="99dp"/>
+            
+            <View
+                android:layout_marginTop="-30dp"
+                android:visibility="visible"
+                android:layout_marginLeft="-71dp"
+                android:background="@mipmap/icon_layer"
+                android:layout_width="225dp"
+                android:layout_height="217dp"/>
+
+            
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_below="@id/tv_home_title"
+                android:layout_marginTop="34dp"
+                android:id="@+id/rvHomeCatalog"
+                android:layout_width="match_parent"
+                android:layout_height="280dp"/>
+
+            <ImageView
+                android:id="@+id/iv_home_after_sale"
+                android:src="@mipmap/icon_after_sale"
+                android:layout_below="@id/rvHomeCatalog"
+                android:layout_marginTop="70dp"
+                android:layout_centerHorizontal="true"
+                android:layout_width="131dp"
+                android:layout_height="143dp"/>
+
+
+        </RelativeLayout>
+
+        <fragment
+            android:name="androidx.navigation.fragment.NavHostFragment"
+            app:defaultNavHost="true"
+            app:navGraph="@navigation/nav_graph"
+            android:id="@+id/flHome"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+
+
+
+    </LinearLayout>
+</layout>

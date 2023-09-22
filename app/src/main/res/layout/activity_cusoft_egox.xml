@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/bleConnectState"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:minHeight="50dp"
+        android:text="" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/startScan"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:text="开始扫描" />
+
+        <Button
+            android:id="@+id/StopScan"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:text="停止扫描" />
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/bleDeviceLists"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="#50000000"></ListView>
+
+    <LinearLayout style="@style/layout">
+
+        <TextView
+            android:id="@+id/SdkVersion"
+            style="@style/textview"
+            android:text="" />
+
+        <Button
+            android:id="@+id/btnGetSdkVersion"
+            style="@style/button"
+            android:text="获取sdk版本号"
+            android:visibility="gone" />
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/layout"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/showBattery"
+            style="@style/textview"
+            android:text="" />
+
+        <Button
+            android:id="@+id/btnGetBattery"
+            style="@style/button"
+            android:text="获取电量" />
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/layout"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/showDeviceModel"
+            style="@style/textview"
+            android:text="" />
+
+        <Button
+            android:id="@+id/btnGetDeviceModel"
+            style="@style/button"
+            android:text="获取设备型号" />
+    </LinearLayout>
+
+    <LinearLayout style="@style/layout">
+
+        <TextView
+            android:id="@+id/showDeviceSn"
+            style="@style/textview"
+            android:text="" />
+
+        <Button
+            android:id="@+id/btnGetDeviceSn"
+            style="@style/button"
+            android:text="获取设备序列号" />
+    </LinearLayout>
+
+    <LinearLayout style="@style/layout">
+
+        <TextView
+            android:id="@+id/showDeviceVersion"
+            style="@style/textview"
+            android:text="" />
+
+        <Button
+            android:id="@+id/btnGetDeviceVersion"
+            style="@style/button"
+            android:text="获取设备版本号" />
+    </LinearLayout>
+
+    <LinearLayout style="@style/layout">
+
+        <TextView
+            android:id="@+id/showBleMac"
+            style="@style/textview"
+            android:text="" />
+
+        <Button
+            android:id="@+id/btnGetBleMac"
+            style="@style/button"
+            android:text="获取设备号" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/showSign"
+            style="@style/textview"
+            android:layout_width="wrap_content"
+            android:text=""
+            android:textColor="#000000" />
+
+        <TextView
+            android:id="@+id/showMac"
+            style="@style/textview"
+            android:layout_width="wrap_content"
+            android:text=""
+            android:textColor="#000000" />
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="444dp"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:paddingBottom="24dp"
+        android:layout_width="444dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_login_white_20">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="24dp"
+            android:text="编辑个人资料"
+            android:textColor="@color/black"
+            android:textSize="23sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/iv_compile_popup_x"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="19dp"
+            android:layout_marginEnd="19dp"
+            android:src="@mipmap/xmark" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="86dp"
+            android:text="昵称"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/ed_my_name"
+            android:layout_width="304dp"
+            android:layout_height="42dp"
+            android:layout_marginStart="86dp"
+            android:layout_marginTop="79dp"
+            android:background="@drawable/shape_edtext_8"
+            android:gravity="center_vertical"
+            android:hint=""
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:textColor="@color/black"
+            android:textSize="24sp" />
+
+        <TextView
+            android:layout_below="@id/ed_my_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="20dp"
+            android:text="签名"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:layout_below="@id/ed_my_name"
+            android:id="@+id/ed_my_content"
+            android:layout_width="304dp"
+            android:layout_height="77dp"
+            android:layout_marginStart="86dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/shape_edtext_8"
+            android:gravity="top"
+            android:hint=""
+            android:paddingStart="16dp"
+            android:paddingTop="9dp"
+            android:paddingEnd="16dp"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/tv_my_photo"
+            android:visibility="gone"
+            android:layout_marginTop="20dp"
+            android:layout_below="@id/ed_my_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:text="咨询\n热线"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:visibility="gone"
+            android:inputType="phone"
+            android:layout_marginTop="20dp"
+            android:layout_below="@id/ed_my_content"
+            android:id="@+id/ed_my_photo"
+            android:layout_width="304dp"
+            android:layout_height="42dp"
+            android:layout_marginStart="86dp"
+            android:background="@drawable/shape_edtext_8"
+            android:gravity="top"
+            android:hint=""
+            android:paddingStart="16dp"
+            android:paddingTop="9dp"
+            android:paddingEnd="16dp"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+    </RelativeLayout>
+
+</RelativeLayout>

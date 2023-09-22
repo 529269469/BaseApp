@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="61dp"
+    android:layout_height="81dp">
+
+    <LinearLayout
+        android:id="@+id/ll_time"
+        android:gravity="center_horizontal"
+        android:background="@drawable/shape_time_10"
+        android:orientation="vertical"
+        android:layout_width="60dp"
+        android:layout_height="80dp"
+        tools:ignore="MissingConstraints">
+
+        <TextView
+            android:id="@+id/tv_time_week"
+            android:layout_marginTop="15dp"
+            android:textColor="@color/color_7B6F72"
+            android:textSize="12sp"
+            android:text="二"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/tv_time_calendar"
+            android:layout_marginTop="@dimen/dp_10"
+            android:textColor="@color/color_7B6F72"
+            android:textSize="12sp"
+            android:text="11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

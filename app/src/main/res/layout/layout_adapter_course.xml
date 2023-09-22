@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="167dp"
+    android:layout_height="148dp">
+
+    <ImageView
+        android:id="@+id/iv_adapter_course"
+        android:scaleType="fitXY"
+        android:layout_width="167dp"
+        android:layout_height="116dp"/>
+
+    <TextView
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/iv_adapter_course"
+        android:id="@+id/tv_adapter_course"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        android:text="冥想练习第一章"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+</RelativeLayout>

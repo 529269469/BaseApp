@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="login"
+            type="com.example.psychology.base_app.base.BaseViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@mipmap/login_bg"
+        android:orientation="vertical"
+        tools:context=".ui.LoginActivity">
+
+        <SurfaceView
+            android:visibility="visible"
+            android:id="@+id/pv_login"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+        <RelativeLayout
+            android:layout_width="631dp"
+            android:layout_height="515dp"
+            android:layout_centerInParent="true"
+            android:background="@drawable/shape_login_white"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:id="@+id/tvLoginSignIn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="222dp"
+                android:layout_marginTop="62dp"
+                android:gravity="top"
+                android:text="登录"
+                android:textColor="@color/black"
+                android:textSize="24sp" />
+
+            <!-- Auto layout, variables, and unit scale are not yet supported -->
+            <View
+                android:id="@+id/viewLoginLine1"
+                android:layout_width="22.38dp"
+                android:layout_height="4.89dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="235dp"
+                android:layout_marginTop="97dp"
+                android:background="@color/color_login_line" />
+
+
+            <TextView
+                android:id="@+id/tvLoginRegister"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="345dp"
+                android:layout_marginTop="62dp"
+                android:gravity="top"
+                android:text="注册"
+                android:textColor="@color/color_login_2"
+                android:textSize="24sp" />
+
+            <View
+                android:id="@+id/viewLoginLine2"
+                android:layout_width="22.38dp"
+                android:layout_height="4.89dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="360dp"
+                android:layout_marginTop="97dp"
+                android:background="@color/color_login_line"
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:id="@+id/ll_login_close"
+                android:layout_width="272dp"
+                android:layout_height="39dp"
+                android:layout_marginStart="79dp"
+                android:layout_marginTop="124dp"
+                android:background="@drawable/shape_login_close"
+                android:visibility="gone">
+
+                <ImageView
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="8dp"
+                    android:src="@mipmap/icon_red_close" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="8dp"
+                    android:text="用户名或密码错误，请重新输入"
+                    android:textColor="#F04D58"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
+
+            <EditText
+                android:id="@+id/etLoginSignIn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="79dp"
+                android:layout_marginTop="180dp"
+                android:layout_marginRight="79dp"
+                android:hint="您的用户名"
+                android:textColor="@color/black"
+                android:textColorHint="@color/color_login_et_hint" />
+
+
+            <EditText
+                android:id="@+id/etLoginPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/etLoginSignIn"
+                android:layout_marginLeft="79dp"
+                android:layout_marginTop="50dp"
+                android:layout_marginRight="79dp"
+                android:digits="0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ,."
+                android:hint="您的密码"
+                android:password="true"
+                android:textColor="@color/black"
+                android:textColorHint="@color/color_login_et_hint" />
+
+
+            <Button
+                android:id="@+id/btLoginBegin"
+                android:layout_width="248dp"
+                android:layout_height="62dp"
+                android:layout_below="@id/etLoginPassword"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="40dp"
+                android:background="@drawable/shape_login_sign_in"
+                android:text="登录"
+                android:textColor="@color/white"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/tvLoginTourist"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/btLoginBegin"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="23dp"
+                android:text="游客登录"
+                android:textColor="@color/black" />
+
+
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+</layout>

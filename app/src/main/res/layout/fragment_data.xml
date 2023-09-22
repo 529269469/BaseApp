@@ -1,0 +1,376 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="data"
+            type="com.example.psychology.base_app.base.BaseViewModel" />
+    </data>
+
+    <ScrollView  xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/shape_login_white_20"
+        tools:context=".ui.my.DataFragment">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:layout_marginEnd="17dp"
+                android:layout_marginBottom="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <RelativeLayout
+                    android:id="@+id/rv_data_week_1"
+                    android:layout_marginTop="17dp"
+                    android:layout_marginStart="18dp"
+                    android:background="@mipmap/rectangle58752"
+                    android:layout_width="655dp"
+                    android:layout_height="444dp">
+
+                    <RelativeLayout
+                        android:id="@+id/rl_data_week_1"
+                        android:layout_marginStart="52dp"
+                        android:orientation="vertical"
+                        android:layout_marginTop="29dp"
+                        android:background="@mipmap/component51"
+                        android:layout_width="551dp"
+                        android:layout_height="50dp">
+
+                        <TextView
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="21dp"
+                            android:textColor="@color/white"
+                            android:textSize="20sp"
+                            android:text="本周数据"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                        <TextView
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            android:id="@+id/tv_data_week_time1"
+                            android:layout_marginEnd="17dp"
+                            android:textColor="@color/white"
+                            android:textSize="20sp"
+                            android:text="114分钟"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/rl_data_week_2"
+                        android:layout_marginTop="13dp"
+                        android:layout_below="@id/rl_data_week_1"
+                        android:background="@mipmap/component6"
+                        android:layout_marginStart="52dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+
+                        <TextView
+                            android:layout_marginTop="20dp"
+                            android:layout_marginStart="26dp"
+                            android:textColor="@color/white"
+                            android:textSize="20sp"
+                            android:text="放松训练"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                        <TextView
+                            android:id="@+id/tv_data_week_time2"
+                            android:layout_marginTop="51dp"
+                            android:layout_marginStart="26dp"
+                            android:textColor="@color/white"
+                            android:textSize="32sp"
+                            android:text="95"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                        <TextView
+                            android:layout_toRightOf="@id/tv_data_week_time2"
+                            android:layout_marginTop="63dp"
+                            android:layout_marginStart="6dp"
+                            android:textColor="@color/white"
+                            android:textSize="20sp"
+                            android:text="分钟"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:background="@mipmap/component7"
+                        android:layout_marginTop="13dp"
+                        android:layout_below="@id/rl_data_week_1"
+                        android:layout_marginStart="333dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+
+                        <TextView
+                            android:layout_marginTop="20dp"
+                            android:layout_marginStart="26dp"
+                            android:textColor="@color/white"
+                            android:textSize="20sp"
+                            android:text="冥想训练"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                        <TextView
+                            android:id="@+id/tv_data_week_time3"
+                            android:layout_marginTop="51dp"
+                            android:layout_marginStart="26dp"
+                            android:textColor="@color/white"
+                            android:textSize="32sp"
+                            android:text="95"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                        <TextView
+                            android:layout_toRightOf="@id/tv_data_week_time3"
+                            android:layout_marginTop="63dp"
+                            android:layout_marginStart="6dp"
+                            android:textColor="@color/white"
+                            android:textSize="20sp"
+                            android:text="分钟"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_below="@id/rl_data_week_2"
+                        android:id="@+id/rl_data_week_excellent"
+                        android:background="@mipmap/component8"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginStart="52dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+
+                        <TextView
+                            android:layout_marginTop="20dp"
+                            android:layout_marginStart="26dp"
+                            android:textColor="@color/white"
+                            android:textSize="20sp"
+                            android:text="本周学员数据"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/rv_data_week_excellent"
+                            android:layout_marginTop="63dp"
+                            android:layout_marginStart="26dp"
+                            android:layout_width="451dp"
+                            android:layout_height="55dp"/>
+
+
+                        <ImageView
+                            android:layout_marginTop="80dp"
+                            android:layout_marginStart="508dp"
+                            android:src="@mipmap/icon_right10"
+                            android:layout_width="11dp"
+                            android:layout_height="9dp"/>
+
+                    </RelativeLayout>
+
+
+
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_below="@id/rv_data_week_1"
+                    android:id="@+id/rv_data2"
+                    android:layout_marginTop="-40dp"
+                    android:layout_marginStart="18dp"
+                    android:background="@mipmap/rectangle58752"
+                    android:layout_width="655dp"
+                    android:layout_height="444dp">
+
+                    <RelativeLayout
+                        android:id="@+id/rl_data_day"
+                        android:layout_marginStart="52dp"
+                        android:orientation="vertical"
+                        android:layout_marginTop="29dp"
+                        android:background="@mipmap/component51"
+                        android:layout_width="551dp"
+                        android:layout_height="50dp">
+
+                        <TextView
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="21dp"
+                            android:textColor="@color/white"
+                            android:textSize="20sp"
+                            android:text="今日数据"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                        <TextView
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            android:id="@+id/tv_data_day_time"
+                            android:layout_marginEnd="17dp"
+                            android:textColor="@color/white"
+                            android:textSize="20sp"
+                            android:text="114分钟"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/rl_3"
+                        android:layout_marginTop="13dp"
+                        android:layout_below="@id/rl_data_day"
+                        android:background="@mipmap/component6"
+                        android:layout_marginStart="52dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+
+                        <TextView
+                            android:layout_marginTop="20dp"
+                            android:layout_marginStart="26dp"
+                            android:textColor="@color/white"
+                            android:textSize="20sp"
+                            android:text="放松训练"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                        <TextView
+                            android:id="@+id/tv_data_day_time2"
+                            android:layout_marginTop="51dp"
+                            android:layout_marginStart="26dp"
+                            android:textColor="@color/white"
+                            android:textSize="32sp"
+                            android:text="95"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                        <TextView
+                            android:layout_toRightOf="@id/tv_data_day_time2"
+                            android:layout_marginTop="63dp"
+                            android:layout_marginStart="6dp"
+                            android:textColor="@color/white"
+                            android:textSize="20sp"
+                            android:text="分钟"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:background="@mipmap/component7"
+                        android:layout_marginTop="13dp"
+                        android:layout_below="@id/rl_data_day"
+                        android:layout_marginStart="333dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+
+                        <TextView
+                            android:layout_marginTop="20dp"
+                            android:layout_marginStart="26dp"
+                            android:textColor="@color/white"
+                            android:textSize="20sp"
+                            android:text="冥想训练"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                        <TextView
+                            android:id="@+id/tv_data_day_time3"
+                            android:layout_marginTop="51dp"
+                            android:layout_marginStart="26dp"
+                            android:textColor="@color/white"
+                            android:textSize="32sp"
+                            android:text="95"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                        <TextView
+                            android:layout_toRightOf="@id/tv_data_day_time3"
+                            android:layout_marginTop="63dp"
+                            android:layout_marginStart="6dp"
+                            android:textColor="@color/white"
+                            android:textSize="20sp"
+                            android:text="分钟"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_below="@id/rl_3"
+                        android:id="@+id/rl_data_day_excellent"
+                        android:background="@mipmap/component8"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginStart="52dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+
+                        <TextView
+                            android:layout_marginTop="20dp"
+                            android:layout_marginStart="26dp"
+                            android:textColor="@color/white"
+                            android:textSize="20sp"
+                            android:text="今日学员数据"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/rv_data_day_excellent"
+                            android:layout_marginTop="63dp"
+                            android:layout_marginStart="26dp"
+                            android:layout_width="451dp"
+                            android:layout_height="55dp"/>
+
+                        <ImageView
+                            android:layout_marginTop="80dp"
+                            android:layout_marginStart="508dp"
+                            android:src="@mipmap/icon_right10"
+                            android:layout_width="11dp"
+                            android:layout_height="9dp"/>
+
+
+
+                    </RelativeLayout>
+
+
+
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_marginStart="-10dp"
+                    android:layout_toRightOf="@id/rv_data_week_1"
+                    android:layout_marginTop="17dp"
+                    android:background="@mipmap/rectangle5907"
+                    android:layout_width="wrap_content"
+                    android:layout_height="700dp">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:layout_marginBottom="60dp"
+                        android:id="@+id/rv_data_ranking"
+                        android:layout_marginTop="29dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                </RelativeLayout>
+            </RelativeLayout>
+
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</layout>

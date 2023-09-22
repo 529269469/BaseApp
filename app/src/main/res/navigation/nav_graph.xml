@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/RelaxFragment">
+
+    <fragment
+        android:id="@+id/RelaxFragment"
+        android:name="com.example.psychology.ui.fragment.RelaxFragment"
+        android:label="放松"
+        tools:layout="@layout/fragment_relax">
+
+        <action
+            android:id="@+id/action_RelaxFragment_to_respiratoryTrainingkFragment"
+            app:destination="@id/respiratoryTrainingFragment" />
+        <action
+            android:id="@+id/action_RelaxFragment_to_breatheFragment"
+            app:destination="@id/breatheFragment" />
+
+        <action
+            android:id="@+id/action_RelaxFragment_to_feelSuffocatedFragment"
+            app:destination="@id/feelSuffocatedFragment" />
+        <action
+            android:id="@+id/action_RelaxFragment_to_trainingFragment"
+            app:destination="@id/trainingFragment" />
+        <action
+            android:id="@+id/action_RelaxFragment_to_trainingFragment2"
+            app:destination="@id/trainingFragment2" />
+        <action
+            android:id="@+id/action_RelaxFragment_to_brainWaveFragment"
+            app:destination="@id/brainWaveFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/respiratoryTrainingFragment"
+        android:name="com.example.psychology.ui.fragment.RespiratoryTrainingFragment"
+        android:label="fragment_respiratory_training"
+        tools:layout="@layout/fragment_respiratory_training" />
+    <fragment
+        android:id="@+id/feelSuffocatedFragment"
+        android:name="com.example.psychology.ui.fragment.FeelSuffocatedFragment"
+        android:label="FeelSuffocatedFragment" />
+    <fragment
+        android:id="@+id/trainingFragment"
+        android:name="com.example.psychology.ui.fragment.TrainingFragment"
+        android:label="TrainingFragment" />
+    <fragment
+        android:id="@+id/brainWaveFragment"
+        android:name="com.example.psychology.ui.fragment.BrainWaveFragment"
+        android:label="BrainWaveFragment" />
+
+
+    <fragment
+        android:id="@+id/MeditationFragment"
+        android:name="com.example.psychology.ui.fragment.MeditationFragment"
+        android:label="冥想"
+        tools:layout="@layout/fragment_meditation">
+        <action
+            android:id="@+id/action_MeditationFragment_to_trainingFragment"
+            app:destination="@id/trainingFragment" />
+        <action
+            android:id="@+id/action_MeditationFragment_to_trainingFragment2"
+            app:destination="@id/trainingFragment2" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/BreatheFragment"
+        android:name="com.example.psychology.ui.fragment.ReportFragment"
+        android:label="报告"
+        tools:layout="@layout/fragment_report">
+        <action
+            android:id="@+id/action_BreatheFragment_to_reportDetailsFragment"
+            app:destination="@id/reportDetailsFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/reportDetailsFragment"
+        android:name="com.example.psychology.ui.fragment.ReportDetailsFragment"
+        android:label="ReportDetailsFragment" />
+
+    <fragment
+        android:id="@+id/MyFragment"
+        android:name="com.example.psychology.ui.fragment.MyFragment"
+        android:label="我的"
+        tools:layout="@layout/fragment_my">
+        <action
+            android:id="@+id/action_fragment_my_to_passwordFragment"
+            app:destination="@id/passwordFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/trainingFragment2"
+        android:name="com.example.psychology.ui.fragment.TrainingFragment2"
+        android:label="TrainingFragment2" >
+
+        <action
+            android:id="@+id/action_trainingFragment2_to_reportDetailsFragment"
+            app:destination="@id/reportDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/breatheFragment"
+        android:name="com.example.psychology.ui.fragment.BreatheFragment"
+        android:label="BreatheFragment" >
+        <action
+            android:id="@+id/action_breatheFragment_to_feelSuffocatedFragment"
+            app:destination="@id/feelSuffocatedFragment" />
+        <action
+            android:id="@+id/action_breatheFragment_to_respiratoryTrainingFragment"
+            app:destination="@id/respiratoryTrainingFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/passwordFragment"
+        android:name="com.example.psychology.ui.fragment.PasswordFragment"
+        android:label="PasswordFragment" />
+
+
+</navigation>

@@ -1,0 +1,417 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="report"
+            type="com.example.psychology.base_app.base.BaseViewModel" />
+
+    </data>
+
+    <LinearLayout xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_F9FBFB"
+        tools:context=".ui.fragment.ReportFragment">
+
+
+        <RelativeLayout
+            android:layout_marginTop="7dp"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent">
+
+            
+            <ImageView
+                android:layout_marginStart="35dp"
+                android:src="@mipmap/icon_rating"
+                android:layout_width="82dp"
+                android:layout_height="61dp"/>
+            
+            <TextView
+                android:layout_marginStart="117dp"
+                android:layout_marginTop="26dp"
+                android:background="@drawable/shape_report_20"
+                android:text="Hi！您的报告在这里呦～"
+                android:textColor="@color/black"
+                android:gravity="center_vertical"
+                android:paddingEnd="14dp"
+                android:paddingStart="16dp"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"/>
+
+            <RelativeLayout
+                android:background="@drawable/shape_login_white_20"
+                android:layout_marginBottom="66dp"
+                android:layout_marginTop="66dp"
+                android:layout_marginStart="32dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:layout_marginTop="17dp"
+                    android:layout_marginStart="29dp"
+                    android:src="@mipmap/pingjiabaogao"
+                    android:layout_width="26dp"
+                    android:layout_height="26dp"/>
+
+                <TextView
+                    android:layout_marginTop="18dp"
+                    android:layout_marginStart="68dp"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:text="训练报告 "
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <View
+                    android:layout_marginEnd="27dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="56dp"
+                    android:background="@color/color_EDEDED"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"/>
+
+                <LinearLayout
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="86dp"
+                    android:gravity="center_vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/iv_report_top"
+                        android:src="@mipmap/left3"
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"/>
+
+                    <TextView
+                        android:id="@+id/tv_report_year"
+                        android:textColor="@color/color_ADA4A5"
+                        android:text="2023-05"
+                        android:layout_marginEnd="30dp"
+                        android:layout_marginStart="30dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+
+                    <ImageView
+                        android:id="@+id/iv_report_net"
+                        android:src="@mipmap/right2"
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"/>
+                    
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tv_report_select_year"
+                    android:layout_marginEnd="29dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="81dp"
+                    android:paddingStart="12dp"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/white"
+                    android:text="选择年份"
+                    android:background="@mipmap/icon_select_year"
+                    android:layout_width="94dp"
+                    android:layout_height="30dp"/>
+
+
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_marginStart="29dp"
+                    android:layout_marginEnd="29dp"
+                    android:layout_marginTop="123dp"
+                    android:id="@+id/rv_report_time"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <RelativeLayout
+                    android:layout_marginTop="253dp"
+                    android:id="@+id/rl_report_not"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/iv_report_dazuo"
+                        android:layout_centerHorizontal="true"
+                        android:src="@mipmap/group100"
+                        android:layout_width="141dp"
+                        android:layout_height="180dp"/>
+
+                    <TextView
+                        android:textSize="20sp"
+                        android:textColor="#4D000000"
+                        android:gravity="center"
+                        android:text="嘘，深呼吸，放松~\n请在这里查看您的训练报告～"
+                        android:layout_marginTop="24dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_below="@id/iv_report_dazuo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:visibility="gone"
+                    android:id="@+id/ll_report2"
+                    android:layout_marginEnd="26dp"
+                    android:layout_marginStart="26dp"
+                    android:orientation="vertical"
+                    android:layout_marginTop="253dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        android:text="训练报告"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:layout_marginTop="15dp"
+                        android:id="@+id/rv_report"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+
+
+                </LinearLayout>
+
+
+
+            </RelativeLayout>
+
+
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="15dp"
+            android:layout_height="match_parent"/>
+
+        <RelativeLayout
+            android:layout_marginTop="7dp"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:layout_marginTop="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/iv_report_favorite"
+                    android:layout_marginEnd="85dp"
+                    android:layout_alignParentEnd="true"
+                    android:src="@mipmap/icon_favorite"
+                    android:layout_width="44dp"
+                    android:layout_height="44dp"/>
+                <ImageView
+                    android:id="@+id/iv_report_history"
+                    android:layout_marginEnd="25dp"
+                    android:layout_alignParentEnd="true"
+                    android:src="@mipmap/icon_history"
+                    android:layout_width="44dp"
+                    android:layout_height="44dp"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_marginBottom="66dp"
+                android:background="@drawable/shape_login_white_20"
+                android:layout_marginEnd="49dp"
+                android:layout_marginTop="66dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+                <ImageView
+                    android:layout_marginTop="13dp"
+                    android:layout_marginStart="29dp"
+                    android:src="@mipmap/vector"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"/>
+
+                <TextView
+                    android:layout_marginTop="15dp"
+                    android:layout_marginStart="68dp"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:text="练习数据 "
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <ImageView
+                    android:id="@+id/iv_report_week_mouth"
+                    android:layout_marginEnd="27dp"
+                    android:layout_marginTop="14dp"
+                    android:layout_alignParentEnd="true"
+                    android:src="@mipmap/dropdown"
+                    android:layout_width="76dp"
+                    android:layout_height="30dp"/>
+
+                <View
+                    android:layout_marginEnd="27dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="56dp"
+                    android:background="@color/color_EDEDED"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"/>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="50dp">
+
+                    <ImageView
+                        android:layout_marginEnd="-20dp"
+                        android:layout_marginStart="-20dp"
+                        android:scaleType="centerCrop"
+                        android:src="@mipmap/rectangle5875"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                    <LinearLayout
+                        android:id="@+id/llReportZhong"
+                        android:orientation="vertical"
+                        android:layout_marginTop="60dp"
+                        android:layout_centerHorizontal="true"
+                        android:gravity="center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/tv_report_leiji_day"
+                            android:textColor="@color/black"
+                            android:textSize="24sp"
+                            android:text="7"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+                        <TextView
+                            android:layout_marginTop="12dp"
+                            android:textColor="@color/color_B3B3B3"
+                            android:textSize="16sp"
+                            android:text="累计(天数)"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_marginRight="62dp"
+                        android:layout_toLeftOf="@id/llReportZhong"
+                        android:orientation="vertical"
+                        android:layout_marginTop="60dp"
+                        android:gravity="center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/tv_report_leiji"
+                            android:textColor="@color/black"
+                            android:textSize="24sp"
+                            android:text="158"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+                        <TextView
+                            android:layout_marginTop="12dp"
+                            android:textColor="@color/color_B3B3B3"
+                            android:textSize="16sp"
+                            android:text="累计(次数)"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_marginLeft="62dp"
+                        android:layout_toRightOf="@id/llReportZhong"
+                        android:orientation="vertical"
+                        android:layout_marginTop="60dp"
+                        android:gravity="center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/tv_report_lianxu"
+                            android:textColor="@color/black"
+                            android:textSize="24sp"
+                            android:text="158"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+                        <TextView
+                            android:layout_marginTop="12dp"
+                            android:textColor="@color/color_B3B3B3"
+                            android:textSize="16sp"
+                            android:text="连续(天数)"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                    </LinearLayout>
+
+
+                    <RelativeLayout
+                        android:id="@+id/rlReportzhuzi"
+                        android:layout_marginTop="150dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:layout_marginEnd="-20dp"
+                            android:layout_marginStart="-20dp"
+                            android:scaleType="centerCrop"
+                            android:src="@mipmap/rectangle2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/rv_report_time2"
+                            android:layout_marginStart="47dp"
+                            android:layout_marginEnd="27dp"
+                            android:layout_marginTop="57dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:visibility="gone"
+                            android:id="@+id/rv_report_time3"
+                            android:layout_marginStart="47dp"
+                            android:layout_marginEnd="27dp"
+                            android:layout_marginTop="57dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+
+                    </RelativeLayout>
+
+                    <TextView
+                        android:id="@+id/tv_report_rank"
+                        android:textColor="@color/color_B3B3B3"
+                        android:layout_marginTop="-30dp"
+                        android:layout_marginStart="33dp"
+                        android:layout_below="@id/rlReportzhuzi"
+                        android:text="注:数据以每天的训练时长(0min-100min)为准"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+
+                </RelativeLayout>
+
+
+            </RelativeLayout>
+
+
+
+        </RelativeLayout>
+
+
+
+
+    </LinearLayout>
+</layout>
+
+

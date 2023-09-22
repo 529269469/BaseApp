@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="198dp"
+    android:layout_height="70dp">
+    
+    <LinearLayout
+        android:id="@+id/llHomeCatalog"
+        android:gravity="center_vertical"
+        android:layout_width="198dp"
+        android:layout_height="70dp">
+        
+        <ImageView
+            android:id="@+id/ivHomeCatalog"
+            android:layout_marginLeft="30dp"
+            android:layout_width="38dp"
+            android:layout_height="38dp"/>
+
+        <TextView
+            android:id="@+id/tvHomeCatalog"
+            android:text="放松"
+            android:textColor="@color/white"
+            android:textSize="26sp"
+            android:layout_marginLeft="17dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        
+        
+    </LinearLayout>
+
+</LinearLayout>

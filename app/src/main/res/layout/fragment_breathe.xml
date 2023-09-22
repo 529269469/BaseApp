@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+        <variable
+            name="breathe"
+            type="com.example.psychology.base_app.base.BaseViewModel" />
+
+    </data>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:gravity="center_vertical"
+            android:id="@+id/llBreatheLeft"
+            android:paddingLeft="31dp"
+            android:paddingTop="19dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:src="@mipmap/left2"
+                android:layout_width="22dp"
+                android:layout_height="22dp" />
+
+            <TextView
+                android:layout_marginStart="14dp"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                android:text="呼吸训练"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:textColor="@color/white"
+                android:textSize="24sp"
+                android:text="呼吸训练"
+                android:gravity="center"
+                android:background="@drawable/shape_feel"
+                android:id="@+id/tv_lung"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="240dp"
+                android:layout_height="240dp"/>
+
+            <TextView
+                android:layout_marginStart="200dp"
+                android:textColor="@color/white"
+                android:textSize="24sp"
+                android:text="憋气训练"
+                android:gravity="center"
+                android:background="@drawable/shape_feel"
+                android:id="@+id/tv_lung2"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="240dp"
+                android:layout_height="240dp"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+</layout>

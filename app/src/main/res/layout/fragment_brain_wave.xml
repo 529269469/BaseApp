@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="brain_wave"
+            type="com.example.psychology.base_app.base.BaseViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_F9FBFB"
+        android:orientation="vertical"
+        tools:context=".ui.fragment.BrainWaveFragment">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:paddingTop="8dp"
+            android:paddingBottom="20dp">
+
+            <ImageView
+                android:id="@+id/iv_brain_favorite"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="85dp"
+                android:src="@mipmap/icon_favorite" />
+
+            <ImageView
+                android:id="@+id/iv_brain_history"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="25dp"
+                android:src="@mipmap/icon_history" />
+
+            <LinearLayout
+                android:id="@+id/llBrainLeft"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:paddingLeft="43dp"
+                android:paddingTop="24dp">
+
+                <ImageView
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:src="@mipmap/left2" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="14dp"
+                    android:text="脑波反馈"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/color_EDEDED" />
+
+
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="43dp"
+                android:layout_marginTop="24dp"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="909dp"
+                    android:layout_height="462dp"
+                    android:background="@drawable/shape_login_white_20">
+
+                    <com.github.mikephil.charting.charts.LineChart
+                        android:id="@+id/lc_brain_wave_delta"
+                        android:layout_width="857dp"
+                        android:layout_height="387dp"
+                        android:layout_centerInParent="true" />
+
+                    <TextView
+                        android:layout_marginTop="4dp"
+                        android:textSize="12sp"
+                        android:textColor="@color/black"
+                        android:layout_marginBottom="40dp"
+                        android:layout_marginStart="80dp"
+                        android:layout_below="@id/lc_brain_wave_delta"
+                        android:text="Delta波在深度睡眠、催眠状态或无意识状态下最为明显。它的波幅范围大约是20-200μV"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                </RelativeLayout>
+
+
+                <RelativeLayout
+                    android:layout_marginTop="36dp"
+                    android:layout_width="909dp"
+                    android:layout_height="462dp"
+                    android:background="@drawable/shape_login_white_20">
+
+                    <com.github.mikephil.charting.charts.LineChart
+                        android:id="@+id/lc_brain_wave_theta"
+                        android:layout_width="857dp"
+                        android:layout_height="387dp"
+                        android:layout_centerInParent="true" />
+
+                    <TextView
+                        android:layout_marginTop="4dp"
+                        android:textSize="12sp"
+                        android:textColor="@color/black"
+                        android:layout_marginBottom="40dp"
+                        android:layout_marginStart="80dp"
+                        android:layout_below="@id/lc_brain_wave_theta"
+                        android:text="Theta波在轻度至中度的睡眠、深度冥想或者日梦状态下往往增强。波幅范围大约在5-10μV。 "
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                </RelativeLayout>
+
+
+
+                <RelativeLayout
+                    android:layout_marginBottom="100dp"
+                    android:layout_width="909dp"
+                    android:layout_height="462dp"
+                    android:layout_marginTop="36dp"
+                    android:background="@drawable/shape_login_white_20">
+
+                    <com.github.mikephil.charting.charts.LineChart
+                        android:id="@+id/lc_brain_wave_lowAlpha"
+                        android:layout_width="857dp"
+                        android:layout_height="387dp"
+                        android:layout_centerInParent="true" />
+
+                    <TextView
+                        android:layout_marginTop="4dp"
+                        android:textSize="12sp"
+                        android:textColor="@color/black"
+                        android:layout_marginBottom="40dp"
+                        android:layout_marginStart="80dp"
+                        android:layout_below="@id/lc_brain_wave_lowAlpha"
+                        android:text="Alpha波是大脑放松并且无意识思考时的主导波形，高Alpha更可能出现在深度放松、冥想状态。"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_marginBottom="100dp"
+                    android:layout_width="909dp"
+                    android:layout_height="462dp"
+                    android:layout_marginTop="36dp"
+                    android:background="@drawable/shape_login_white_20">
+
+                    <com.github.mikephil.charting.charts.LineChart
+                        android:id="@+id/lc_brain_wave_highAlpha"
+                        android:layout_width="857dp"
+                        android:layout_height="387dp"
+                        android:layout_centerInParent="true" />
+                    <TextView
+                        android:layout_marginTop="4dp"
+                        android:textSize="12sp"
+                        android:textColor="@color/black"
+                        android:layout_marginBottom="40dp"
+                        android:layout_marginStart="80dp"
+                        android:layout_below="@id/lc_brain_wave_highAlpha"
+                        android:text="低Alpha更常见于轻度放松状态。Alpha波的波幅大致在20-200μV。"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_marginBottom="100dp"
+                    android:layout_width="909dp"
+                    android:layout_height="462dp"
+                    android:layout_marginTop="36dp"
+                    android:background="@drawable/shape_login_white_20">
+
+                    <com.github.mikephil.charting.charts.LineChart
+                        android:id="@+id/lc_brain_wave_lowBeta"
+                        android:layout_width="857dp"
+                        android:layout_height="387dp"
+                        android:layout_centerInParent="true" />
+                    <TextView
+                        android:layout_marginTop="4dp"
+                        android:textSize="12sp"
+                        android:textColor="@color/black"
+                        android:layout_marginBottom="40dp"
+                        android:layout_marginStart="80dp"
+                        android:layout_below="@id/lc_brain_wave_lowBeta"
+                        android:text="Beta波在警觉、思考、聚精会神或焦虑时出现。Low Beta通常与正常清醒和注意力集中状态有关。"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_marginBottom="100dp"
+                    android:layout_width="909dp"
+                    android:layout_height="462dp"
+                    android:layout_marginTop="36dp"
+                    android:background="@drawable/shape_login_white_20">
+
+                    <com.github.mikephil.charting.charts.LineChart
+                        android:id="@+id/lc_brain_wave_highBeta"
+                        android:layout_width="857dp"
+                        android:layout_height="387dp"
+                        android:layout_centerInParent="true" />
+                    <TextView
+                        android:layout_marginTop="4dp"
+                        android:textSize="12sp"
+                        android:textColor="@color/black"
+                        android:layout_marginBottom="40dp"
+                        android:layout_marginStart="80dp"
+                        android:layout_below="@id/lc_brain_wave_highBeta"
+                        android:text="High Beta更可能与焦虑、紧张有关。Beta波的波幅通常在5-30μV。"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_marginBottom="100dp"
+                    android:layout_width="909dp"
+                    android:layout_height="462dp"
+                    android:layout_marginTop="36dp"
+                    android:background="@drawable/shape_login_white_20">
+
+                    <com.github.mikephil.charting.charts.LineChart
+                        android:id="@+id/lc_brain_wave_lowGamma"
+                        android:layout_width="857dp"
+                        android:layout_height="387dp"
+                        android:layout_centerInParent="true" />
+                    <TextView
+                        android:layout_marginTop="4dp"
+                        android:textSize="12sp"
+                        android:textColor="@color/black"
+                        android:layout_marginBottom="40dp"
+                        android:layout_marginStart="80dp"
+                        android:layout_below="@id/lc_brain_wave_lowGamma"
+                        android:text="Gamma波在处理信息或进行高级大脑活动时最为明显，包括学习、记忆和视觉感知。Mid Gamma通常在进行复杂的认知任务时表现得更活跃。"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_marginBottom="100dp"
+                    android:layout_width="909dp"
+                    android:layout_height="462dp"
+                    android:layout_marginTop="36dp"
+                    android:background="@drawable/shape_login_white_20">
+
+                    <com.github.mikephil.charting.charts.LineChart
+                        android:id="@+id/lc_brain_wave_midGamma"
+                        android:layout_width="857dp"
+                        android:layout_height="387dp"
+                        android:layout_centerInParent="true" />
+                    <TextView
+                        android:layout_marginTop="4dp"
+                        android:textSize="12sp"
+                        android:textColor="@color/black"
+                        android:layout_marginBottom="40dp"
+                        android:layout_marginStart="80dp"
+                        android:layout_below="@id/lc_brain_wave_midGamma"
+                        android:text="Low Gamma可能对某些感知任务更敏感。Gamma波的波幅通常小于5微伏。"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                </RelativeLayout>
+
+
+            </LinearLayout>
+        </ScrollView>
+
+
+    </LinearLayout>
+</layout>

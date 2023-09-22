@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="meditation"
+            type="com.example.psychology.base_app.base.BaseViewModel" />
+
+    </data>
+
+    <RelativeLayout xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.fragment.RelaxFragment">
+
+        <RelativeLayout
+            android:id="@+id/rl_relax_top"
+            android:layout_marginTop="8dp"
+            android:layout_width="702dp"
+            android:layout_height="44dp"
+            android:layout_marginStart="32dp"
+            android:background="@drawable/shape_search">
+
+            <ImageView
+                android:layout_width="21dp"
+                android:layout_height="21dp"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="10dp"
+                android:src="@mipmap/search" />
+
+            <EditText
+                android:id="@+id/et_meditation_search"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="47dp"
+                android:layout_marginEnd="74dp"
+                android:background="@null"
+                android:gravity="center_vertical"
+                android:hint="开始搜索..."
+                android:textColor="#C3C7C7" />
+
+            <TextView
+                android:layout_width="74dp"
+                android:layout_height="44dp"
+                android:layout_alignParentEnd="true"
+                android:background="@drawable/shape_search_14"
+                android:gravity="center"
+                android:text="搜索"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp">
+
+            <ImageView
+                android:id="@+id/iv_meditation_favorite"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="85dp"
+                android:src="@mipmap/icon_favorite" />
+
+            <ImageView
+                android:id="@+id/iv_meditation_history"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="25dp"
+                android:src="@mipmap/icon_history" />
+
+        </RelativeLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="70dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <com.youth.banner.Banner
+                    android:layout_marginTop="3dp"
+                    android:id="@+id/brMeditation"
+                    android:layout_width="match_parent"
+                    android:layout_height="313dp"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginEnd="51dp" />
+
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvMeditation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/brMeditation"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginEnd="51dp" />
+
+            </LinearLayout>
+
+
+        </androidx.core.widget.NestedScrollView>
+
+
+        <RelativeLayout
+            android:visibility="gone"
+            android:id="@+id/rl_relax_top2"
+            android:background="@drawable/shape_report_bai_16"
+            android:layout_below="@id/rl_relax_top"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_margin="23dp"
+                android:id="@+id/rv_relax_top2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+</layout>
+
+

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable
+            name="course"
+            type="com.example.psychology.base_app.base.BaseViewModel" />
+    </data>
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" 
+        tools:context=".ui.my.CourseFragment">
+
+         <TextView
+             android:id="@+id/tv_course_title"
+             android:textColor="@color/black"
+             android:textSize="24sp"
+             android:text="我的课程(4个)"
+             android:layout_marginStart="31dp"
+             android:layout_marginTop="28dp"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"/>
+
+        <View
+            android:layout_marginEnd="37dp"
+            android:layout_marginTop="78dp"
+            android:background="@color/color_EDEDED"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:visibility="visible"
+            android:id="@+id/rv_course"
+            android:layout_marginStart="31dp"
+            android:layout_marginTop="107dp"
+            android:layout_marginEnd="37dp"
+            android:layout_marginBottom="37dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+
+        <RelativeLayout
+            android:id="@+id/iv_course"
+            android:layout_centerInParent="true"
+            android:layout_width="305dp"
+            android:layout_height="148dp">
+            <ImageView
+                android:src="@mipmap/icon_add_video2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+           <TextView
+               android:textSize="20sp"
+               android:textColor="#B9B9B9"
+               android:text="导入音视频"
+               android:layout_centerHorizontal="true"
+               android:layout_marginTop="98dp"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"/>
+
+
+        </RelativeLayout>
+
+
+
+    </RelativeLayout>
+</layout>

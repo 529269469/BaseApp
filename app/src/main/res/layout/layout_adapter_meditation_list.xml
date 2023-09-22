@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="wrap_content">
+
+
+    <LinearLayout
+        android:gravity="center_vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <View
+            android:layout_marginStart="36dp"
+            android:layout_below="@id/brMeditation"
+            android:background="#A4DEED"
+            android:layout_width="4dp"
+            android:layout_height="34dp"/>
+
+        <TextView
+            android:id="@+id/tv_adapter1_meditation_title"
+            android:layout_below="@id/brMeditation"
+            android:text=""
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:layout_marginStart="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_below="@id/brMeditation"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="51dp"
+        android:layout_marginTop="10dp"
+        android:id="@+id/rvMeditationItem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+
+
+</LinearLayout>

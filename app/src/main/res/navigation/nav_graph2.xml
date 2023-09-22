@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/MyListFragment">
+
+    <fragment
+        android:id="@+id/MyListFragment"
+        android:name="com.example.psychology.ui.my.MyListFragment"
+        android:label="放松"
+        tools:layout="@layout/fragment_my_list">
+
+        <action
+            android:id="@+id/action_RelaxFragment_to_trainingFragment2_2"
+            app:destination="@id/trainingFragment2_2" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/trainingFragment2_2"
+        android:name="com.example.psychology.ui.fragment.TrainingFragment2"
+        android:label="TrainingFragment2" />
+    <fragment
+        android:id="@+id/BreatheFragment"
+        android:name="com.example.psychology.ui.fragment.ReportFragment"
+        android:label="报告"
+        tools:layout="@layout/fragment_report">
+        <action
+            android:id="@+id/action_BreatheFragment_to_reportDetailsFragment"
+            app:destination="@id/reportDetailsFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/reportDetailsFragment"
+        android:name="com.example.psychology.ui.fragment.ReportDetailsFragment"
+        android:label="ReportDetailsFragment" />
+    <fragment
+        android:id="@+id/dataFragment"
+        android:name="com.example.psychology.ui.my.DataFragment"
+        android:label="DataFragment" />
+
+    <fragment
+        android:id="@+id/courseFragment"
+        android:name="com.example.psychology.ui.my.CourseFragment"
+        android:label="CourseFragment" >
+        <action
+            android:id="@+id/action_courseFragment_to_trainingFragment2_2"
+            app:destination="@id/trainingFragment2_2" />
+    </fragment>
+
+</navigation>

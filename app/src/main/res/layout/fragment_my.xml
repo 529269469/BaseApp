@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="my"
+            type="com.example.psychology.base_app.base.BaseViewModel" />
+
+    </data>
+
+    <LinearLayout xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_F9FBFB"
+        tools:context=".ui.fragment.RelaxFragment">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="11dp"
+            android:layout_marginEnd="37dp"
+            android:layout_marginBottom="59dp"
+            android:background="@drawable/shape_login_white_20">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@mipmap/rectangle4303">
+
+                <ImageView
+                    android:layout_width="128dp"
+                    android:layout_height="128dp"
+                    android:layout_marginStart="19dp"
+                    android:layout_marginTop="20dp"
+                    android:src="@mipmap/group10325" />
+
+                <ImageView
+                    android:id="@+id/iv_my_head"
+                    android:layout_width="89dp"
+                    android:layout_height="89dp"
+                    android:layout_marginStart="38dp"
+                    android:layout_marginTop="39dp"
+                    android:src="@mipmap/rectangle7" />
+
+                <TextView
+                    android:id="@+id/tv_my_name"
+                    android:layout_marginTop="45dp"
+                    android:layout_marginStart="163dp"
+                    android:textColor="@color/black"
+                    android:textSize="30sp"
+                    android:text="Jonathan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:id="@+id/tv_my_content"
+                    android:layout_marginTop="97dp"
+                    android:layout_marginStart="163dp"
+                    android:textColor="#78000000"
+                    android:textSize="18sp"
+                    android:text="享受当下安静的一切，安静如初"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <ImageView
+                    android:id="@+id/iv_my_compile"
+                    android:layout_marginStart="24dp"
+                    android:layout_toRightOf="@id/tv_my_name"
+                    android:layout_marginTop="48dp"
+                    android:src="@mipmap/vector1"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"/>
+
+
+            </RelativeLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_marginStart="38dp"
+                android:id="@+id/rvMy"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <RelativeLayout
+                android:layout_marginTop="42dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:id="@+id/bt_exit"
+                    android:background="@drawable/shape_bt_30"
+                    android:layout_marginStart="38dp"
+                    android:textSize="20sp"
+                    android:textColor="@color/white"
+                    android:text="退出登录"
+                    android:layout_width="166dp"
+                    android:layout_height="48dp"/>
+
+                <Button
+                    android:layout_alignParentEnd="true"
+                    android:id="@+id/bt_my_password"
+                    android:background="@drawable/shape_bt_30_red"
+                    android:layout_marginEnd="38dp"
+                    android:textSize="20sp"
+                    android:textColor="@color/white"
+                    android:text="修改密码"
+                    android:layout_width="166dp"
+                    android:layout_height="48dp"/>
+
+
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+</layout>
+
+

@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="training2"
+            type="com.example.psychology.base_app.base.BaseViewModel" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".ui.fragment.RespiratoryTrainingFragment">
+
+        <RelativeLayout
+            android:layout_marginTop="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/iv_training_favorite"
+                android:layout_marginEnd="85dp"
+                android:layout_alignParentEnd="true"
+                android:src="@mipmap/icon_collect3"
+                android:layout_width="44dp"
+                android:layout_height="44dp"/>
+            <ImageView
+                android:id="@+id/iv_training_history"
+                android:layout_marginEnd="25dp"
+                android:layout_alignParentEnd="true"
+                android:src="@mipmap/icon_history"
+                android:layout_width="44dp"
+                android:layout_height="44dp"/>
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:paddingEnd="@dimen/sp_14"
+                    android:paddingLeft="30dp"
+                    android:paddingTop="20dp"
+                    android:id="@+id/ivTrainingLeft"
+                    android:layout_width="66dp"
+                    android:layout_height="42dp"
+                    android:src="@mipmap/left2" />
+
+                <TextView
+                    android:paddingTop="20dp"
+                    android:id="@+id/tvTrainingLeft"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="训练"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_marginTop="20sp"
+            android:background="@color/black"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <SurfaceView
+                android:id="@+id/pv_training"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+            <ImageView
+                android:scaleType="fitXY"
+                android:id="@+id/iv_training"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+            <RelativeLayout
+                android:id="@+id/ll_training_play"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="32dp"
+                android:layout_width="match_parent"
+                android:layout_height="58dp">
+                <ImageView
+                    android:id="@+id/iv_training_play"
+                    android:layout_marginStart="32dp"
+                    android:src="@mipmap/icon_training_play"
+                    android:layout_width="56dp"
+                    android:layout_height="56dp"/>
+
+                <ImageView
+                    android:layout_toRightOf="@id/iv_training_play"
+                    android:id="@+id/iv_training_stop"
+                    android:layout_marginStart="21dp"
+                    android:src="@mipmap/icon_training_stop"
+                    android:layout_width="56dp"
+                    android:layout_height="56dp"/>
+
+                <SeekBar
+                    android:id="@+id/pb_training_progress"
+                    style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                    android:layout_marginEnd="50dp"
+                    android:layout_marginStart="58dp"
+                    android:layout_toRightOf="@id/iv_training_stop"
+                    android:layout_marginBottom="11dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    android:text="00:00"
+                    android:id="@+id/tv_training_time"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginStart="58dp"
+                    android:layout_toRightOf="@id/iv_training_stop"
+                    android:layout_above="@id/pb_training_progress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:id="@+id/tv_training_time1"
+                    android:textColor="@color/color_979C9E"
+                    android:textSize="16sp"
+                    android:text="/"
+                    android:layout_marginBottom="5dp"
+                    android:layout_toRightOf="@id/tv_training_time"
+                    android:layout_above="@id/pb_training_progress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:textColor="@color/color_979C9E"
+                    android:textSize="16sp"
+                    android:text="00:00"
+                    android:id="@+id/tv_training_time2"
+                    android:layout_marginBottom="5dp"
+                    android:layout_toRightOf="@id/tv_training_time1"
+                    android:layout_above="@id/pb_training_progress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <ImageView
+                    android:id="@+id/iv_training_full"
+                    android:layout_marginEnd="50dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_above="@id/pb_training_progress"
+                    android:src="@mipmap/icon_training_full"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"/>
+
+            </RelativeLayout>
+
+
+
+
+
+            <LinearLayout
+                android:id="@+id/ll_chart_training"
+                android:layout_width="387dp"
+                android:layout_height="224dp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="11dp"
+                android:layout_marginEnd="11dp"
+                android:layout_marginTop="11dp"
+                android:background="@drawable/shape_bai_transparent_10"
+                android:paddingStart="24dp"
+                android:paddingTop="20dp"
+                android:paddingEnd="16dp"
+                android:paddingBottom="15dp">
+
+                <com.github.mikephil.charting.charts.LineChart
+                    android:id="@+id/chart_training"
+                    android:layout_width="347dp"
+                    android:layout_height="189dp" />
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/rv_line_chart_close"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="3dp"
+                android:layout_marginEnd="16dp"
+                android:layout_below="@id/ll_chart_training"
+                android:background="@drawable/shape_bai_transparent_10"
+                android:layout_width="55dp"
+                android:layout_height="55dp">
+
+                <ImageView
+                    android:id="@+id/iv_line_chart_close"
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:layout_centerInParent="true"
+                    android:src="@mipmap/icon_line_chart_close" />
+
+            </RelativeLayout>
+
+
+
+
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/bt_training_1"
+                    android:layout_width="176dp"
+                    android:layout_height="56dp"
+                    android:background="@drawable/shape_bt_10_d9d9d9"
+                    android:gravity="center"
+                    android:text="自由训练"
+                    android:textColor="@color/black"
+                    android:textSize="30sp" />
+
+                <Button
+                    android:id="@+id/bt_training_2"
+                    android:layout_width="176dp"
+                    android:layout_height="56dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/shape_bt_10_d9d9d9"
+                    android:gravity="center"
+                    android:text="正式训练"
+                    android:textColor="@color/black"
+                    android:textSize="30sp" />
+
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+
+
+    </LinearLayout>
+
+</layout>

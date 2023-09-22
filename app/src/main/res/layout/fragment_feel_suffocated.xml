@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="feel_suffocated"
+            type="com.example.psychology.base_app.base.BaseViewModel" />
+
+    </data>
+    <RelativeLayout xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".ui.fragment.FeelSuffocatedFragment">
+
+        <SurfaceView
+            android:id="@+id/sv_feel"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:gravity="center_vertical"
+                android:id="@+id/llFeelSuffocatedLeft"
+                android:paddingLeft="31dp"
+                android:paddingTop="19dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:src="@mipmap/left_bai"
+                    android:layout_width="22dp"
+                    android:layout_height="22dp" />
+
+                <TextView
+                    android:layout_marginStart="14dp"
+                    android:textSize="20sp"
+                    android:textColor="@color/white"
+                    android:text="憋气训练"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+            <TextView
+                android:textColor="@color/white"
+                android:textSize="24sp"
+                android:text="开始"
+                android:gravity="center"
+                android:background="@drawable/shape_feel"
+                android:id="@+id/tv_feel_lung"
+                android:layout_marginTop="177dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="240dp"
+                android:layout_height="240dp"/>
+
+
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</layout>

@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="relax"
+            type="com.example.psychology.base_app.base.BaseViewModel" />
+
+    </data>
+
+    <LinearLayout xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.fragment.RelaxFragment">
+
+        <RelativeLayout
+            android:background="@drawable/shape_relax"
+            android:layout_weight="7"
+            android:paddingBottom="28dp"
+            android:orientation="vertical"
+            android:paddingLeft="32dp"
+            android:paddingRight="32dp"
+            android:paddingTop="14dp"
+            android:layout_width="0dp"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:id="@+id/rl_relax_top"
+                android:background="@drawable/shape_search"
+                android:layout_width="match_parent"
+                android:layout_height="44dp">
+
+                <ImageView
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:src="@mipmap/search"
+                    android:layout_width="21dp"
+                    android:layout_height="21dp"/>
+
+                <EditText
+                    android:id="@+id/et_relax_search"
+                    android:layout_marginEnd="74dp"
+                    android:gravity="center_vertical"
+                    android:textColor="#C3C7C7"
+                    android:hint="开始搜索..."
+                    android:layout_marginStart="47dp"
+                    android:background="@null"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+                
+                <TextView
+                    android:id="@+id/tv_relax_search"
+                    android:background="@drawable/shape_search_14"
+                    android:layout_alignParentEnd="true"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    android:text="搜索"
+                    android:gravity="center"
+                    android:layout_width="74dp"
+                    android:layout_height="match_parent"/>
+
+            </RelativeLayout>
+
+        
+            <com.youth.banner.Banner
+                android:layout_marginTop="62dp"
+                android:id="@+id/brRelax"
+                android:layout_width="match_parent"
+                android:layout_height="220dp"/>
+            
+            <com.google.android.material.tabs.TabLayout
+                android:layout_below="@id/brRelax"
+                app:tabGravity="fill"
+                app:tabMaxWidth="0dp"
+                app:tabMode="fixed"
+                app:tabTextColor="#869397"
+                app:tabSelectedTextColor="@color/black"
+                app:tabTextAppearance="@style/MyTabLayoutStyle"
+                app:tabIndicatorColor="@color/black"
+                app:tabIndicatorFullWidth="false"
+                app:tabRippleColor="@color/transparent"
+                app:tabBackground="@color/transparent"
+                android:layout_marginTop="20dp"
+                android:id="@+id/tbRelax"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_below="@id/tbRelax"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/shape_login_white_20"
+                android:id="@+id/rvRelax"
+                android:padding="23dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <RelativeLayout
+                android:visibility="gone"
+                android:id="@+id/rl_relax_top2"
+                android:background="@drawable/shape_report_bai_16"
+                android:layout_below="@id/rl_relax_top"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_margin="23dp"
+                    android:id="@+id/rv_relax_top2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_weight="3"
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:layout_marginTop="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/iv_relax_favorite"
+                    android:layout_marginEnd="85dp"
+                    android:layout_alignParentEnd="true"
+                    android:src="@mipmap/icon_favorite"
+                    android:layout_width="44dp"
+                    android:layout_height="44dp"/>
+                <ImageView
+                    android:id="@+id/iv_relax_history"
+                    android:layout_marginEnd="25dp"
+                    android:layout_alignParentEnd="true"
+                    android:src="@mipmap/icon_history"
+                    android:layout_width="44dp"
+                    android:layout_height="44dp"/>
+
+            </RelativeLayout>
+
+            <ImageView
+                android:layout_marginEnd="10dp"
+                android:layout_alignParentEnd="true"
+                android:src="@mipmap/icon_flower"
+                android:layout_width="186dp"
+                android:layout_height="148dp"/>
+
+            <TextView
+                android:id="@+id/tvRelaxContent"
+                android:text="开始您的专属训练吧！"
+                android:textSize="17sp"
+                android:textColor="@color/black"
+                android:paddingStart="18dp"
+                android:gravity="center_vertical"
+                android:layout_marginTop="80dp"
+                android:background="@drawable/shape_relax_content"
+                android:layout_marginStart="23dp"
+                android:layout_marginEnd="26dp"
+                android:layout_width="match_parent"
+                android:layout_height="53dp"/>
+
+            <TextView
+                android:layout_marginStart="28dp"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                android:text="生物反馈训练"
+                android:layout_marginTop="35dp"
+                android:layout_below="@id/tvRelaxContent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="-5sp"
+                />
+            
+            <ImageView
+                android:id="@+id/ivRelaxCerebrum"
+                android:layout_marginStart="39dp"
+                android:layout_below="@id/tvRelaxContent"
+                android:layout_marginTop="75dp"
+                android:src="@mipmap/icon_cerebrum"
+                android:layout_width="228dp"
+                android:layout_height="228dp"/>
+
+            <TextView
+                android:layout_marginStart="28dp"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                android:text="呼吸训练"
+                android:layout_marginTop="16dp"
+                android:layout_below="@id/ivRelaxCerebrum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="-5sp"
+                />
+
+            <ImageView
+                android:id="@+id/ivRelaxLung"
+                android:layout_marginStart="39dp"
+                android:layout_below="@id/ivRelaxCerebrum"
+                android:layout_marginTop="67dp"
+                android:src="@mipmap/icon_lung"
+                android:layout_width="228dp"
+                android:layout_height="228dp"/>
+
+
+        </RelativeLayout>
+    </LinearLayout>
+</layout>
+
+
