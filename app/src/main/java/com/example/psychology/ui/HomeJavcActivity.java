@@ -171,7 +171,7 @@ public class HomeJavcActivity extends AppCompatActivity {
 
     private List<HomeActivity.CatalogBean> list = new ArrayList<>();
     private HomeAdapter homeAdapter;
-    private NavController controll;
+    private NavController controller;
     private IsPlayPopupWindow isPlayPopupWindow, getBattery;
 
     private void initView() {
@@ -194,7 +194,7 @@ public class HomeJavcActivity extends AppCompatActivity {
         homeAdapter = new HomeAdapter(R.layout.layout_adapter_home, list);
         bind.rvHomeCatalog.setAdapter(homeAdapter);
         homeAdapter.setList(list);
-        controll = Navigation.findNavController(this, R.id.flHome);
+        controller = Navigation.findNavController(this, R.id.flHome);
 
         homeAdapter.setOnItemClickListener((adapter, view, position) -> {
             if (TrainingFragment2.isplay) {
@@ -207,16 +207,16 @@ public class HomeJavcActivity extends AppCompatActivity {
                     homeAdapter.setList(list);
                     switch (position) {
                         case 0:
-                            controll.navigate(R.id.RelaxFragment);
+                            controller.navigate(R.id.RelaxFragment);
                             break;
                         case 1:
-                            controll.navigate(R.id.MeditationFragment);
+                            controller.navigate(R.id.MeditationFragment);
                             break;
                         case 2:
-                            controll.navigate(R.id.BreatheFragment);
+                            controller.navigate(R.id.BreatheFragment);
                             break;
                         case 3:
-                            controll.navigate(R.id.MyFragment);
+                            controller.navigate(R.id.MyFragment);
                             break;
                     }
                 });
@@ -229,16 +229,16 @@ public class HomeJavcActivity extends AppCompatActivity {
                 homeAdapter.setList(list);
                 switch (position) {
                     case 0:
-                        controll.navigate(R.id.RelaxFragment);
+                        controller.navigate(R.id.RelaxFragment);
                         break;
                     case 1:
-                        controll.navigate(R.id.MeditationFragment);
+                        controller.navigate(R.id.MeditationFragment);
                         break;
                     case 2:
-                        controll.navigate(R.id.BreatheFragment);
+                        controller.navigate(R.id.BreatheFragment);
                         break;
                     case 3:
-                        controll.navigate(R.id.MyFragment);
+                        controller.navigate(R.id.MyFragment);
                         break;
                 }
             }
@@ -257,7 +257,7 @@ public class HomeJavcActivity extends AppCompatActivity {
                     }
                     list.get(3).setBool(true);
                     homeAdapter.setList(list);
-                    controll.navigate(R.id.MyFragment);
+                    controller.navigate(R.id.MyFragment);
                 });
             } else {
                 for (int i = 0; i < list.size(); i++) {
@@ -265,7 +265,7 @@ public class HomeJavcActivity extends AppCompatActivity {
                 }
                 list.get(3).setBool(true);
                 homeAdapter.setList(list);
-                controll.navigate(R.id.MyFragment);
+                controller.navigate(R.id.MyFragment);
             }
 
         });
