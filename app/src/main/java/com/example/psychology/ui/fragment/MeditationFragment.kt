@@ -3,6 +3,7 @@ package com.example.psychology.ui.fragment
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.app.AlertDialog
 import androidx.core.widget.addTextChangedListener
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.GridLayoutManager
@@ -191,6 +192,33 @@ class MeditationFragment :
                 bundle.putString("video_path", list2[position].video_path)
                 Navigation.findNavController(v).navigate(R.id.action_MeditationFragment_to_trainingFragment2,bundle)
             }
+
+            meditationItemAdapter.setOnItemLongClickListener { adapter, view, position ->
+                val builder = AlertDialog.Builder(requireActivity())
+                builder.setTitle("提示")
+                builder.setMessage("是否删除此视频")
+                builder.setPositiveButton("确定") { dialog, which ->
+                    val db = Room.databaseBuilder(
+                        requireActivity(),
+                        AppDatabase::class.java, "users_dp"
+                    ).build()
+                    Thread {
+                        val videoDataDao = db.videoDataDao()
+                        videoDataDao.delete(list2[position])
+                        list2.removeAt(position)
+                        activity?.runOnUiThread {
+                            meditationItemAdapter.setList(list2)
+                        }
+                    }.start()
+                }
+                builder.setNegativeButton("取消") { dialog, which ->
+
+                }
+                val dialog = builder.create()
+                dialog.show()
+                return@setOnItemLongClickListener true
+            }
+
         }
 
     }

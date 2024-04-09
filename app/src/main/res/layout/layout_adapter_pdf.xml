@@ -17,6 +17,7 @@
             android:layout_height="36dp"/>
 
         <TextView
+            android:id="@+id/tv_pdf_name"
             android:layout_marginStart="57dp"
             android:layout_marginTop="5dp"
             android:textColor="#F04D58"

@@ -71,7 +71,8 @@ public class CreationChart {
         YAxis rightAxis = chart.getAxisRight();
         rightAxis.setTextColor(Color.GRAY);
         rightAxis.setAxisMinimum(0f);//最小条目
-        rightAxis.setLabelCount(5);//设置最大分为几格
+        rightAxis.setAxisMaximum(100f);
+        rightAxis.setLabelCount(6);//设置最大分为几格
         rightAxis.setGridColor(Color.rgb(221, 218, 218));
         rightAxis.setDrawGridLines(true);
         rightAxis.setAxisLineColor(Color.rgb(221, 218, 218));

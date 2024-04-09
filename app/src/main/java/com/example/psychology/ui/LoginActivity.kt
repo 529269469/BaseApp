@@ -3,6 +3,7 @@ package com.example.psychology.ui
 
 import android.Manifest
 import android.annotation.SuppressLint
+import android.app.ActionBar
 import android.bluetooth.BluetoothAdapter
 import android.bluetooth.BluetoothGattCharacteristic
 import android.content.Intent
@@ -89,7 +90,16 @@ class LoginActivity :
     }
 
     override fun initView() {
-//        requestBLEPermission()
+        val decorView = window.decorView
+        val uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN
+        decorView.systemUiVisibility = uiOptions
+        val actionBar: ActionBar? = actionBar
+        actionBar?.hide()
+
+        requestBLEPermission()
+        setPermission {
+
+        }
         applyDebounceClickListener(
             bind.tvLoginSignIn,
             bind.tvLoginRegister,
@@ -320,6 +330,28 @@ class LoginActivity :
 
             kv.putBoolean("Assets", true)
         }
+
+//        Thread{
+//            val db = Room.databaseBuilder(
+//                this,
+//                AppDatabase::class.java, "users_dp"
+//            ).build()
+//            val videoDataDao = db.videoDataDao()
+//            val video_path = SDCardUtils.getSDCardPathByEnvironment() + "/Movies/生理反馈/"
+//            videoDataDao.insertAll(
+//                VideoData(
+//                    0,
+//                    "佛教音乐",
+//                    "佛教音乐的神秘韵律引领您进入冥想，减轻焦虑，感受内心的平静与安宁。",
+//                    "${video_path}佛教音乐.mp4",
+//                    "音乐放松",
+//                    1,
+//                    1,
+//                    0
+//                )
+//            )
+//        }.start()
+
     }
 
     private fun setData(db: AppDatabase) {
@@ -607,7 +639,7 @@ class LoginActivity :
      */
     private fun setDevice() {
         val uniqueDeviceId = DeviceUtils.getUniqueDeviceId()
-        LogUtils.e(uniqueDeviceId)
+        Log.e("IDID",uniqueDeviceId)
 
         /**
          * 绑定设备ID 非此设备ID不能使用
@@ -616,6 +648,8 @@ class LoginActivity :
         list.add("287361b4859dc3fb5820afe6fafe4daa3")
         list.add("25471cca84f2d37278b67fbde1344bab6")
         list.add("2b187652bb51f3ba7a3d2f0388f183fd1")
+        list.add("22973595ca3f531ddaa354e0acfb86fa1")
+        list.add("2bd2cf30eed0d36b4bb44ffa2f59272c6")
         var isDevice = false
         list.forEach {
             if (it == uniqueDeviceId) {

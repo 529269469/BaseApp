@@ -50,6 +50,13 @@ class LadingActivity : BaseMVVMActivity<ActivityLadingBinding,BaseViewModel> (R.
 
         }
         setPlay()
+//        Thread{
+//            Thread.sleep(2000)
+//            runOnUiThread {
+//                startActivity(Intent(this, LoginActivity::class.java))
+//                finish()
+//            }
+//        }.start()
 
     }
 
@@ -63,7 +70,7 @@ class LadingActivity : BaseMVVMActivity<ActivityLadingBinding,BaseViewModel> (R.
         val video_path = SDCardUtils.getSDCardPathByEnvironment() + "/Movies/生理反馈/软件背景视频/"
         val holder = bind.svLading.holder
         player = MediaPlayer()
-        player?.setDataSource(this, Uri.parse("${video_path}logo动画.mp4"))
+        player?.setDataSource(this, Uri.parse("${video_path}登录界面背景视频2.mp4"))
         player?.setVideoScalingMode(MediaPlayer.VIDEO_SCALING_MODE_SCALE_TO_FIT_WITH_CROPPING)
 
         player?.prepare()

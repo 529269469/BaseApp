@@ -5,6 +5,7 @@ import android.graphics.drawable.ColorDrawable
 import android.graphics.pdf.PdfDocument
 import android.graphics.pdf.PdfDocument.PageInfo
 import android.text.Html
+import android.text.Spanned
 import android.view.Gravity
 import android.view.View
 import android.view.ViewGroup
@@ -31,6 +32,8 @@ import com.example.psychology.base_app.utils.SpacesItemDecoration
 import com.example.psychology.databinding.FragmentReportDetailsBinding
 import com.example.psychology.romm.base.AppDatabase
 import com.example.psychology.ui.Connotation
+import com.example.psychology.ui.HomeJavcActivity
+import com.example.psychology.ui.LoginActivity
 import com.example.psychology.ui.view.IsPlayPopupWindow
 import com.example.psychology.ui.view.LoadingDialog
 import com.lwb.radarchart.RadarChartView
@@ -89,11 +92,11 @@ class ReportDetailsFragment :
             var heartRate = 0
             if (heartRateList.isNotEmpty()) {
                 heartRateList.forEach { heartRateList ->
-                    if (heartRateList.num!!<30){
-                        heartRateList.num=80
+                    if (heartRateList.num!! < 30) {
+                        heartRateList.num = 80
                     }
-                    if (heartRateList.num!!>140){
-                        heartRateList.num=80
+                    if (heartRateList.num!! > 140) {
+                        heartRateList.num = 80
                     }
                     heartRate += heartRateList.num!!
                 }
@@ -160,69 +163,91 @@ class ReportDetailsFragment :
 
                 }
 //                setChart?.setMax(radarChart1.size)
+                var charSequence: Spanned? = null
+                var charSequence2: Spanned? = null
+                var report_dirll_score = 0
+                var report_mind_score = 0
+                if (reportData.yali_front == 0 && reportData.qingxu_front == 0 && reportData.pilao_front == 0) {
+                    charSequence = Html.fromHtml(
+                        "${Connotation().before_measurement_concentration(reportData.zhuanzhu_front!!)} " +
+                                "<br>${Connotation().before_measurement_relax(reportData.fangsong_front!!)}"
+                    )
 
-                val charSequence = Html.fromHtml(
-                    "${Connotation().before_measurement_concentration(reportData.zhuanzhu_front!!)} " +
-                            "<br>${Connotation().before_measurement_relax(reportData.fangsong_front!!)}"
-//                            "<br>${Connotation().before_measurement_pressure(reportData.yali_front!!)}" +
-//                            "<br>${Connotation().before_measurement_emotion(reportData.qingxu_front!!)}" +
-//                            "<br>${Connotation().before_measurement_tired(reportData.pilao_front!!)}"
+                    charSequence2 = Html.fromHtml(
+                        "${
+                            Connotation().aftertest_concentration(
+                                reportData.zhuanzhu_later!!,
+                                reportData.zhuanzhu_effectiveness!!
+                            )
+                        } " +
+                                "<br>${
+                                    Connotation().aftertest_relax(
+                                        reportData.fangsong_later!!,
+                                        reportData.fangsong_effectiveness!!
+                                    )
+                                }"
+                    )
 
-                )
-                val charSequence2 = Html.fromHtml(
-                    "${
-                        Connotation().aftertest_concentration(
-                            reportData.zhuanzhu_later!!,
-                            reportData.zhuanzhu_effectiveness!!
-                        )
-                    } " +
-                            "<br>${
-                                Connotation().aftertest_relax(
-                                    reportData.fangsong_later!!,
-                                    reportData.fangsong_effectiveness!!
-                                )
-                            }"
-//                            "<br>${
-//                                Connotation().aftertest_pressure(
-//                                    reportData.yali_later!!,
-//                                    reportData.yali_effectiveness!!
-//                                )
-//                            }" +
-//                            "<br>${
-//                                Connotation().aftertest_emotion(
-//                                    reportData.qingxu_later!!,
-//                                    reportData.qingxu_effectiveness!!
-//                                )
-//                            }" +
-//                            "<br>${
-//                                Connotation().aftertest_tired(
-//                                    reportData.pilao_later!!,
-//                                    reportData.pilao_effectiveness!!
-//                                )
-//                            }"
-                )
+                    report_dirll_score =
+                        (reportData.zhuanzhu_centre!! * 0.4
+                                + reportData.fangsong_centre!! * 0.5).toInt()
+                    report_mind_score =
+                        (reportData.zhuanzhu_effectiveness!! * 0.4
+                                + reportData.fangsong_effectiveness!! * 0.5).toInt()
+                } else {
+                    charSequence = Html.fromHtml(
+                        "${Connotation().before_measurement_concentration(reportData.zhuanzhu_front!!)} " +
+                                "<br>${Connotation().before_measurement_relax(reportData.fangsong_front!!)}" +
+                                "<br>${Connotation().before_measurement_pressure(reportData.yali_front!!)}" +
+                                "<br>${Connotation().before_measurement_emotion(reportData.qingxu_front!!)}" +
+                                "<br>${Connotation().before_measurement_tired(reportData.pilao_front!!)}"
+                    )
+
+                    charSequence2 = Html.fromHtml(
+                        "${
+                            Connotation().aftertest_concentration(
+                                reportData.zhuanzhu_later!!,
+                                reportData.zhuanzhu_effectiveness!!
+                            )
+                        } " + "<br>${
+                            Connotation().aftertest_relax(
+                                reportData.fangsong_later!!,
+                                reportData.fangsong_effectiveness!!
+                            )
+                        }" + "<br>${
+                            Connotation().aftertest_pressure(
+                                reportData.yali_later!!,
+                                reportData.yali_effectiveness!!
+                            )
+                        }" + "<br>${
+                            Connotation().aftertest_emotion(
+                                reportData.qingxu_later!!,
+                                reportData.qingxu_effectiveness!!
+                            )
+                        }" + "<br>${
+                            Connotation().aftertest_tired(
+                                reportData.pilao_later!!,
+                                reportData.pilao_effectiveness!!
+                            )
+                        }"
+                    )
+
+                    report_dirll_score =
+                        (reportData.zhuanzhu_centre!! * 0.3
+                                + reportData.fangsong_centre!! * 0.4
+                                + reportData.qingxu_centre!! * 0.1
+                                + reportData.yali_centre!! * 0.1
+                                + reportData.pilao_centre!! * 0.1).toInt()
+                    report_mind_score =
+                        (reportData.zhuanzhu_effectiveness!! * 0.3
+                                + reportData.fangsong_effectiveness!! * 0.4
+                                + reportData.qingxu_effectiveness!! * 0.1
+                                + reportData.yali_effectiveness!! * 0.1
+                                + reportData.pilao_effectiveness!! * 0.1).toInt()
+                }
+
                 bind.tvReportDetailsFront.text = charSequence
                 bind.tvReportDetailsAftertest.text = charSequence2
-
-//                val report_dirll_score: Int =
-//                    (reportData.zhuanzhu_centre!! * 0.3
-//                            + reportData.fangsong_centre!! * 0.4
-//                            + reportData.qingxu_centre!! * 0.1
-//                            + reportData.yali_centre!! * 0.1
-//                            + reportData.pilao_centre!! * 0.1).toInt()
-//                val report_mind_score: Int =
-//                    (reportData.zhuanzhu_effectiveness!! * 0.3
-//                            + reportData.fangsong_effectiveness!! * 0.4
-//                            + reportData.qingxu_effectiveness!! * 0.1
-//                            + reportData.yali_effectiveness!! * 0.1
-//                            + reportData.pilao_effectiveness!! * 0.1).toInt()
-
-                val report_dirll_score: Int =
-                    (reportData.zhuanzhu_centre!! * 0.4
-                            + reportData.fangsong_centre!! * 0.5).toInt()
-                val report_mind_score: Int =
-                    (reportData.zhuanzhu_effectiveness!! * 0.4
-                            + reportData.fangsong_effectiveness!! * 0.5).toInt()
 
                 bind.progressView1.current = report_dirll_score
                 bind.tvProgress1.text = "$report_dirll_score"
@@ -230,9 +255,9 @@ class ReportDetailsFragment :
                 bind.progressView2.current = report_mind_score
                 bind.tvProgress2.text = "$report_mind_score"
                 val charSequenceMind =
-                    Html.fromHtml("${Connotation().physical_and_mental_state(report_dirll_score)}");
+                    Html.fromHtml(Connotation().physical_and_mental_state(report_dirll_score))
                 val charSequenceDirll =
-                    Html.fromHtml("${Connotation().training_effectiveness(report_mind_score)}");
+                    Html.fromHtml(Connotation().training_effectiveness(report_mind_score))
 
                 bind.tvTvReportDetails1.text = charSequenceMind
                 bind.tvTvReportDetails2.text = charSequenceDirll
@@ -332,7 +357,7 @@ class ReportDetailsFragment :
         pdfAdapter = PDFAdapter(mutableListOf())
         bind.rvReportDownload.adapter = pdfAdapter
 
-        listpdf.add("")
+        listpdf.add("关于${LoginActivity.name}的报告下载")
 
         pdfAdapter?.setList(listpdf)
         pdfAdapter?.setOnItemClickListener { _, v, position ->
@@ -485,6 +510,7 @@ class ReportDetailsFragment :
     inner class PDFAdapter(data: MutableList<String>) :
         BaseQuickAdapter<String, BaseViewHolder>(R.layout.layout_adapter_pdf) {
         override fun convert(holder: BaseViewHolder, item: String) {
+            holder.setText(R.id.tv_pdf_name, item)
         }
 
     }

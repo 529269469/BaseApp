@@ -83,6 +83,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -100,7 +101,7 @@ public class TrainingFragment2 extends Fragment {
     private VideoData videoData;
 
     private int time = 0;
-    private String TAG = "TrainingFragment2";
+    private String TAG = "TAG";
 
     private TextView tv_training_time, tv_training_time2, tvTrainingLeft;
 
@@ -193,7 +194,7 @@ public class TrainingFragment2 extends Fragment {
                 reportId = System.currentTimeMillis();
                 drillType = 2;
                 pb_training_progress.setOnTouchListener((v1, event) -> true);
-                freeTraining("正式训练满五分钟可以得到训练报告", 2);
+                freeTraining("正式训练满六分钟可以得到训练报告", 2);
             } else {
                 freeTraining("请确认脑电设备已经打开且正常运行", 4);
             }
@@ -229,7 +230,7 @@ public class TrainingFragment2 extends Fragment {
         });
 
         iv_training_play.setOnClickListener(v -> {
-            if (drillType == 0||drillType == 2) {
+            if (drillType == 0 || drillType == 2) {
                 return;
             }
             iv_training.setVisibility(View.GONE);
@@ -262,10 +263,10 @@ public class TrainingFragment2 extends Fragment {
             if (drillType == 2) {
                 if (mediaPlayer != null) {
                     int current = mediaPlayer.getCurrentPosition() / 1000;
-                    if (current > 300) {
+                    if (current > 360) {
                         stopPopup();
                     } else {
-                        freeTraining("正式训练未满五分钟，未能生成报告", 3);
+                        freeTraining("正式训练未满六分钟，未能生成报告", 3);
                     }
                 }
             } else {
@@ -361,7 +362,7 @@ public class TrainingFragment2 extends Fragment {
     private int istop = 1;
 
     private void stopPopup() {
-        if (stopWindow==null){
+        if (stopWindow == null) {
             stopWindow = new PopupWindow(getActivity());
         }
         View inflate = getActivity().getLayoutInflater().inflate(R.layout.layout_popup_stop, null);
@@ -419,62 +420,101 @@ public class TrainingFragment2 extends Fragment {
 
     private void setSave() {
         loadingDialog = new LoadingDialog(requireActivity(), iv_training_play);//显示
-        setEvent();
-//        getData(number / 120);
+//        setEvent();
+        getData();
     }
 
+    private boolean isTimer = true;
+
     @SuppressLint("NewApi")
-    public void getData(int num) {
+    public void getData() {
         AppDatabase db = Room.databaseBuilder(
                 requireActivity(),
                 AppDatabase.class, "users_dp"
         ).build();
-//        HomeJavcActivity.fitnessTracker.getBodyStateCommand(new Callback<BodyStateData[]>() {
-//            @Override
-//            public void onSuccess(BodyStateData[] result) {
-//                if (result != null) {
-//                    Log.e(TAG, "手环: " + result.length);
-//                    for (int i = result.length - num; i < result.length; i++) {
-//                        String ymdhms = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(result[i].getTimestamp());
-//                        Log.e(TAG, "手环心率: " + result[i].getHeartRate()
-//                                + "  hrv: " + result[i].getHrv()
-//                                + "  血氧: " + result[i].getBloodOxygen()
-//                                + "  压力: " + result[i].getStress()
-//                                + "  情绪: " + result[i].getEmotion()
-//                                + "  疲劳: " + result[i].getFatigue()
-//                                + "  时间: " + ymdhms);
-//                        if (result[i].getHeartRate() != 0 || result[i].getHrv() != 0) {
-//                            int finalI = i;
-//                            new Thread(() -> {
-//                                RadarChartDao radarChartDao = db.radarChartDao();
-//                                radarChartDao.insertAll(
-//                                        new RadarChartData(reportId, 3, finalI, 0, 100 - result[finalI].getStress()),
-//                                        new RadarChartData(reportId, 4, finalI, 0, 100 - result[finalI].getEmotion()),
-//                                        new RadarChartData(reportId, 5, finalI, 0, 100 - result[finalI].getFatigue()),
-//                                        new RadarChartData(reportId, 6, finalI, result[finalI].getHeartRate(), 0f),
-//                                        new RadarChartData(reportId, 7, finalI, result[finalI].getHrv(), 0f),
-//                                        new RadarChartData(reportId, 8, finalI, result[finalI].getBloodOxygen(), 0f));
-//
-//
-//                            }).start();
-//                        }
-//
-//                    }
-//                    HomeJavcActivity.fitnessTracker.clearDataCommand();
-//                }
-////                setEvent();
-//
-//            }
-//
-//            @Override
-//            public void onFailed(String error) {
-//                Log.e(TAG, "onFailed: " + error);
-//            }
-//        });
+
+        isTimer = true;
+        HomeJavcActivity.fitnessTracker.getBodyStateCommand(new Callback<BodyStateData[]>() {
+            @Override
+            public void onSuccess(BodyStateData[] result) {
+                if (result != null) {
+                    Log.e(TAG, "手环: " + result.length);
+                    for (int i = 0; i < result.length; i++) {
+                        String ymdhms = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(result[i].getTimestamp());
+                        Log.e(TAG, "手环心率: " + result[i].getHeartRate()
+                                + "  hrv: " + result[i].getHrv()
+                                + "  血氧: " + result[i].getBloodOxygen()
+                                + "  压力: " + result[i].getStress()
+                                + "  情绪: " + result[i].getEmotion()
+                                + "  疲劳: " + result[i].getFatigue()
+                                + "  时间: " + ymdhms);
+                        if (result[i].getHeartRate() != 0 || result[i].getHrv() != 0) {
+                            int finalI = i;
+                            new Thread(() -> {
+                                RadarChartDao radarChartDao = db.radarChartDao();
+
+                                float Stress = 0f;//压力
+                                float Emotion = 0f;//情绪
+                                float Fatigue = 0f;//疲劳
+                                if (result[finalI].getStress() > 65f) {
+                                    Stress = 65f;
+                                }
+                                if (result[finalI].getStress() < 25f) {
+                                    Stress = 25f;
+                                }
+                                if (result[finalI].getEmotion() > 2.5f) {
+                                    Emotion = 2.5f;
+                                }
+                                if (result[finalI].getEmotion() < 0.6f) {
+                                    Emotion = 0.6f;
+                                }
+                                if (result[finalI].getFatigue() > 11.85f) {
+                                    Fatigue = 11.85f;
+                                }
+                                if (result[finalI].getFatigue() < 8.62f) {
+                                    Fatigue = 8.62f;
+                                }
+
+                                radarChartDao.insertAll(
+                                        new RadarChartData(reportId, 3, finalI, 0, 100 - Stress),
+                                        new RadarChartData(reportId, 4, finalI, 0, 100 - Emotion),
+                                        new RadarChartData(reportId, 5, finalI, 0, 100 - Fatigue),
+                                        new RadarChartData(reportId, 6, finalI, result[finalI].getHeartRate(), 0f),
+                                        new RadarChartData(reportId, 7, finalI, result[finalI].getHrv(), 0f),
+                                        new RadarChartData(reportId, 8, finalI, result[finalI].getBloodOxygen(), 0f));
+                            }).start();
+                        }
+
+                    }
+                    HomeJavcActivity.fitnessTracker.clearDataCommand();
+                }
+                if (isTimer) {
+                    setEvent();
+                }
+
+            }
+
+            @Override
+            public void onFailed(String error) {
+                Log.e(TAG, "onFailed: " + error);
+            }
+        });
+
+        Timer timer = new Timer();
+        TimerTask timerTask = new TimerTask() {
+            @Override
+            public void run() {
+                if (isTimer) {
+                    setEvent();
+                }
+            }
+        };
+        timer.schedule(timerTask, 10000);
 
     }
 
     private void setEvent() {
+        isTimer = false;
         AppDatabase db = Room.databaseBuilder(
                 requireActivity(),
                 AppDatabase.class, "users_dp"
@@ -485,8 +525,10 @@ public class TrainingFragment2 extends Fragment {
             List<RadarChartData> byMonth1 = radarChartDao.findByMonth(reportId, 1);
             List<RadarChartData> byMonth2 = radarChartDao.findByMonth(reportId, 2);
             List<RadarChartData> byMonth3 = radarChartDao.findByMonth(reportId, 3);
+
             List<RadarChartData> byMonth4 = radarChartDao.findByMonth(reportId, 4);
             List<RadarChartData> byMonth5 = radarChartDao.findByMonth(reportId, 5);
+            Collections.reverse(byMonth3);
 
             if (byMonth1.isEmpty() || byMonth2.isEmpty() || byMonth1.size() < 60) {
                 return;
@@ -525,155 +567,52 @@ public class TrainingFragment2 extends Fragment {
 
             }
 
-            int zhuanzhu_a = 52;
+            int zhuanzhu_a = 48;
             float zhuanzhu_b = 12f;
-            int fangsong_a = 46;
-            float fangsong_b = 15f;
-            int yali_a = 50;
-            float yali_b = 10f;
+            int fangsong_a = 54;
+            float fangsong_b = 12.5f;
+            int yali_a = 47;
+            float yali_b = 24.5f;
             int qingxu_a = 98;
-            float qingxu_b = 0.8f;
+            float qingxu_b = 1.21f;
             int pilao_a = 91;
-            float pilao_b = 1.15f;
-            MMKV kv = MMKV.defaultMMKV();
+            float pilao_b = 2.8f;
             /**
              * 专注
              */
-            int zhuanzhu_average = kv.getInt("zhuanzhu_average", zhuanzhu_a);
-            float zhuanzhu_average2 = kv.getFloat("zhuanzhu_average2", zhuanzhu_b);
-            int zhuanzhu_front_average = kv.getInt("zhuanzhu_front_average", zhuanzhu_a);
-            int zhuanzhu_centre_average = kv.getInt("zhuanzhu_centre_average", zhuanzhu_a);
-            int zhuanzhu_later_average = kv.getInt("zhuanzhu_later_average", zhuanzhu_a);
-            float zhuanzhu_front_average2 = kv.getFloat("zhuanzhu_front_average2", zhuanzhu_b);
-            float zhuanzhu_centre_average2 = kv.getFloat("zhuanzhu_centre_average2", zhuanzhu_b);
-            float zhuanzhu_later_average2 = kv.getFloat("zhuanzhu_later_average2", zhuanzhu_b);
-
             int[] zhuanzhu_front = getSum(radar1_front, zhuanzhu_a, zhuanzhu_b);
             int[] zhuanzhu_centre = getSum(radar1_centre, zhuanzhu_a, zhuanzhu_b);
             int[] zhuanzhu_later = getSum(radar1_later, zhuanzhu_a, zhuanzhu_b);
 
-            kv.putInt("zhuanzhu_front_average", (zhuanzhu_front_average + zhuanzhu_front[1]) / 2);
-            kv.putInt("zhuanzhu_centre_average", (zhuanzhu_centre_average + zhuanzhu_centre[1]) / 2);
-            kv.putInt("zhuanzhu_later_average", (zhuanzhu_later_average + zhuanzhu_later[1]) / 2);
-            kv.putFloat("zhuanzhu_front_average2", (zhuanzhu_front_average2 + zhuanzhu_front[2]) / 2);
-            kv.putFloat("zhuanzhu_centre_average2", (zhuanzhu_centre_average2 + zhuanzhu_centre[2]) / 2);
-            kv.putFloat("zhuanzhu_later_average2", (zhuanzhu_later_average2 + zhuanzhu_later[2]) / 2);
-
-            kv.putInt("zhuanzhu_average", (zhuanzhu_average + zhuanzhu_later[1] + zhuanzhu_centre[1] + zhuanzhu_front[1]) / 4);
-            kv.putFloat("zhuanzhu_average2", (zhuanzhu_average2 + zhuanzhu_later[2] + zhuanzhu_centre[2] + zhuanzhu_front[2]) / 4);
-
             /**
              * 放松
              */
-            int fangsong_average = kv.getInt("fangsong_average", fangsong_a);
-            float fangsong_average2 = kv.getFloat("fangsong_average2", fangsong_b);
-
-            int fangsong_front_average = kv.getInt("fangsong_front_average", fangsong_a);
-            int fangsong_centre_average = kv.getInt("fangsong_centre_average", fangsong_a);
-            int fangsong_later_average = kv.getInt("fangsong_later_average", fangsong_a);
-            float fangsong_front_average2 = kv.getFloat("fangsong_front_average2", fangsong_b);
-            float fangsong_centre_average2 = kv.getFloat("fangsong_centre_average2", fangsong_b);
-            float fangsong_later_average2 = kv.getFloat("fangsong_later_average2", fangsong_b);
-
             int[] fangsong_front = getSum(radar2_front, fangsong_a, fangsong_b);
             int[] fangsong_centre = getSum(radar2_centre, fangsong_a, fangsong_b);
             int[] fangsong_later = getSum(radar2_later, fangsong_a, fangsong_b);
 
-            kv.putInt("fangsong_front_average", (fangsong_front_average + fangsong_front[1]) / 2);
-            kv.putInt("fangsong_centre_average", (fangsong_centre_average + fangsong_centre[1]) / 2);
-            kv.putInt("fangsong_later_average", (fangsong_later_average + fangsong_later[1]) / 2);
-            kv.putFloat("fangsong_front_average2", (fangsong_front_average2 + fangsong_front[2]) / 2);
-            kv.putFloat("fangsong_centre_average2", (fangsong_centre_average2 + fangsong_centre[2]) / 2);
-            kv.putFloat("fangsong_later_average2", (fangsong_later_average2 + fangsong_later[2]) / 2);
-
-            kv.putInt("fangsong_average", (fangsong_average + fangsong_front[1] + fangsong_centre[1] + fangsong_later[1]) / 4);
-            kv.putFloat("fangsong_average2", (fangsong_average2 + fangsong_front[2] + fangsong_centre[2] + fangsong_later[2]) / 4);
-
             /**
              * 压力
              */
-            int yali_average = kv.getInt("yali_average", yali_a);
-            float yali_average2 = kv.getFloat("yali_average2", yali_b);
-
-            int yali_front_average = kv.getInt("yali_front_average", yali_a);
-            int yali_centre_average = kv.getInt("yali_centre_average", yali_a);
-            int yali_later_average = kv.getInt("yali_later_average", yali_a);
-            float yali_front_average2 = kv.getFloat("yali_front_average2", yali_b);
-            float yali_centre_average2 = kv.getFloat("yali_centre_average2", yali_b);
-            float yali_later_average2 = kv.getFloat("yali_later_average2", yali_b);
-
-            int[] yali_front = getSum2(radar3_front, yali_average, yali_average2, "压力前");
-            int[] yali_centre = getSum2(radar3_centre, yali_average, yali_average2, "压力中");
-            int[] yali_later = getSum2(radar3_later, yali_average, yali_average2, "压力后");
-            if (yali_front[1] != 0) {
-                kv.putInt("yali_front_average", (yali_front_average + yali_front[1]) / 2);
-                kv.putInt("yali_centre_average", (yali_centre_average + yali_centre[1]) / 2);
-                kv.putInt("yali_later_average", (yali_later_average + yali_later[1]) / 2);
-                kv.putFloat("yali_front_average2", (yali_front_average2 + yali_front[2]) / 2);
-                kv.putFloat("yali_centre_average2", (yali_centre_average2 + yali_centre[2]) / 2);
-                kv.putFloat("yali_later_average2", (yali_later_average2 + yali_later[2]) / 2);
-
-                kv.putInt("yali_average", (yali_average + yali_front[1] + yali_centre[1] + yali_later[1]) / 4);
-                kv.putFloat("yali_average2", (yali_average2 + yali_front[2] + yali_centre[2] + yali_later[2]) / 4);
-            }
+            int[] yali_front = getSum2(radar3_front, yali_a, yali_b, "压力前", byMonth3);
+            int[] yali_centre = getSum2(radar3_centre, yali_a, yali_b, "压力中", byMonth3);
+            int[] yali_later = getSum2(radar3_later, yali_a, yali_b, "压力后", byMonth3);
 
             /**
              * 情绪
              */
-            int qingxu_average = kv.getInt("qingxu_average", qingxu_a);
-            float qingxu_average2 = kv.getFloat("qingxu_average2", qingxu_b);
-
-            int qingxu_front_average = kv.getInt("qingxu_front_average", qingxu_a);
-            int qingxu_centre_average = kv.getInt("qingxu_centre_average", qingxu_a);
-            int qingxu_later_average = kv.getInt("qingxu_later_average", qingxu_a);
-            float qingxu_front_average2 = kv.getFloat("qingxu_front_average2", qingxu_b);
-            float qingxu_centre_average2 = kv.getFloat("qingxu_centre_average2", qingxu_b);
-            float qingxu_later_average2 = kv.getFloat("qingxu_later_average2", qingxu_b);
-
-            int[] qingxu_front = getSum2(radar4_front, qingxu_average, qingxu_average2, "情绪前");
-            int[] qingxu_centre = getSum2(radar4_centre, qingxu_average, qingxu_average2, "情绪中");
-            int[] qingxu_later = getSum2(radar4_later, qingxu_average, qingxu_average2, "情绪后");
-            if (qingxu_front[1] != 0) {
-                kv.putInt("qingxu_front_average", (qingxu_front_average + qingxu_front[1]) / 2);
-                kv.putInt("qingxu_centre_average", (qingxu_centre_average + qingxu_centre[1]) / 2);
-                kv.putInt("qingxu_later_average", (qingxu_later_average + qingxu_later[1]) / 2);
-                kv.putFloat("qingxu_front_average2", (qingxu_front_average2 + qingxu_front[2]) / 2);
-                kv.putFloat("qingxu_centre_average2", (qingxu_centre_average2 + qingxu_centre[2]) / 2);
-                kv.putFloat("qingxu_later_average2", (qingxu_later_average2 + qingxu_later[2]) / 2);
-                kv.putInt("qingxu_average", (qingxu_average + qingxu_front[1] + qingxu_centre[1] + qingxu_later[1]) / 4);
-                kv.putFloat("qingxu_average2", (qingxu_average2 + qingxu_front[2] + qingxu_centre[2] + qingxu_later[2]) / 4);
-
-            }
+            int[] qingxu_front = getSum2(radar4_front, qingxu_a, qingxu_b, "情绪前", byMonth4);
+            int[] qingxu_centre = getSum2(radar4_centre, qingxu_a, qingxu_b, "情绪中", byMonth4);
+            int[] qingxu_later = getSum2(radar4_later, qingxu_a, qingxu_b, "情绪后", byMonth4);
 
 
             /**
              * 疲劳
              */
-            int pilao_average = kv.getInt("pilao_average", qingxu_a);
-            float pilao_average2 = kv.getFloat("pilao_average2", qingxu_b);
-            int pilao_front_average = kv.getInt("pilao_front_average", pilao_a);
-            int pilao_centre_average = kv.getInt("pilao_centre_average", pilao_a);
-            int pilao_later_average = kv.getInt("pilao_later_average", pilao_a);
-            float pilao_front_average2 = kv.getFloat("pilao_front_average2", pilao_b);
-            float pilao_centre_average2 = kv.getFloat("pilao_centre_average2", pilao_b);
-            float pilao_later_average2 = kv.getFloat("pilao_later_average2", pilao_b);
 
-            int[] pilao_front = getSum2(radar5_front, pilao_average, pilao_average2, "疲劳前");
-            int[] pilao_centre = getSum2(radar5_centre, pilao_average, pilao_average2, "疲劳中");
-            int[] pilao_later = getSum2(radar5_later, pilao_average, pilao_average2, "疲劳后");
-
-            if (pilao_front[1] != 0) {
-                kv.putInt("pilao_front_average", (pilao_front_average + pilao_front[1]) / 2);
-                kv.putInt("pilao_centre_average", (pilao_centre_average + pilao_centre[1]) / 2);
-                kv.putInt("pilao_later_average", (pilao_later_average + pilao_later[1]) / 2);
-                kv.putFloat("pilao_front_average2", (pilao_front_average2 + pilao_front[2]) / 2);
-                kv.putFloat("pilao_centre_average2", (pilao_centre_average2 + pilao_centre[2]) / 2);
-                kv.putFloat("pilao_later_average2", (pilao_later_average2 + pilao_later[2]) / 2);
-                kv.putInt("pilao_average", (pilao_average + pilao_front[1] + pilao_centre[1] + pilao_later[1]) / 4);
-                kv.putFloat("pilao_average2", (pilao_average2 + pilao_front[2] + pilao_centre[2] + pilao_later[2]) / 4);
-
-            }
-
+            int[] pilao_front = getSum2(radar5_front, pilao_a, pilao_b, "疲劳前", byMonth5);
+            int[] pilao_centre = getSum2(radar5_centre, pilao_a, pilao_b, "疲劳中", byMonth5);
+            int[] pilao_later = getSum2(radar5_later, pilao_a, pilao_b, "疲劳后", byMonth5);
 
             Date nowDate = TimeUtils.getNowDate();
             Calendar calendar = Calendar.getInstance();
@@ -683,54 +622,38 @@ public class TrainingFragment2 extends Fragment {
             int month = calendar.get(Calendar.MONTH) + 1;
             int day = calendar.get(Calendar.DAY_OF_MONTH);
 
-            List<ReportData> reportDataList = reportDataDao.getAll();
-            int zhuanzhu_difference = zhuanzhu_later_average - zhuanzhu_front_average;
-            int zhuanzhu_sum = 0;
-            int fangsong_difference = fangsong_later_average - fangsong_front_average;
-            int fangsong_sum = 0;
-            int yali_difference = yali_later_average - yali_front_average;
-            int yali_sum = 0;
-            int qingxu_difference = qingxu_later_average - qingxu_front_average;
-            int qingxu_sum = 0;
-            int pilao_difference = pilao_later_average - pilao_front_average;
-            int pilao_sum = 0;
-
-            for (int i = 0; i < reportDataList.size(); i++) {
-                int zhuanzhu = ((reportDataList.get(i).getZhuanzhu_later_average() - reportDataList.get(i).getZhuanzhu_front_average()) - zhuanzhu_difference) *
-                        ((reportDataList.get(i).getZhuanzhu_later_average() - reportDataList.get(i).getZhuanzhu_front_average()) - zhuanzhu_difference);
-                zhuanzhu_sum = zhuanzhu_sum + zhuanzhu;
-
-                int fangsong = ((reportDataList.get(i).getFangsong_later_average() - reportDataList.get(i).getFangsong_front_average()) - fangsong_difference) *
-                        ((reportDataList.get(i).getFangsong_later_average() - reportDataList.get(i).getFangsong_front_average()) - fangsong_difference);
-                fangsong_sum = fangsong_sum + fangsong;
-
-                int yali = ((reportDataList.get(i).getYali_later_average() - reportDataList.get(i).getYali_front_average()) - yali_difference) *
-                        ((reportDataList.get(i).getYali_later_average() - reportDataList.get(i).getYali_front_average()) - yali_difference);
-                yali_sum = yali_sum + yali;
-
-                int qingxu = ((reportDataList.get(i).getQingxu_later_average() - reportDataList.get(i).getQingxu_front_average()) - qingxu_difference) *
-                        ((reportDataList.get(i).getQingxu_later_average() - reportDataList.get(i).getQingxu_front_average()) - qingxu_difference);
-                qingxu_sum = qingxu_sum + qingxu;
-
-                int pilao = ((reportDataList.get(i).getPilao_later_average() - reportDataList.get(i).getPilao_front_average()) - pilao_difference) *
-                        ((reportDataList.get(i).getPilao_later_average() - reportDataList.get(i).getPilao_front_average()) - pilao_difference);
-                pilao_sum = pilao_sum + pilao;
-
+            int zhuanzhu_effectiveness = getLadar(zhuanzhu_front, zhuanzhu_later, 6f, 10f);
+            int fangsong_effectiveness = getLadar(fangsong_front, fangsong_later, 5f, 9f);
+            int yali_effectiveness = getLadar(yali_front, yali_later, 1f, 8f);
+            int qingxu_effectiveness = getLadar(qingxu_front, qingxu_later, 2f, 3f);
+            int pilao_effectiveness = getLadar(pilao_front, pilao_later, 6.4f, 10f);
+            if (yali_effectiveness>90){
+                yali_effectiveness=90;
+            }
+            if (yali_effectiveness<20){
+                yali_effectiveness=20;
             }
 
-            int zhuanzhu_effectiveness = getLadar(zhuanzhu_front, zhuanzhu_later, zhuanzhu_difference, zhuanzhu_sum, reportDataList.size());
-            int fangsong_effectiveness = getLadar(fangsong_front, fangsong_later, fangsong_difference, fangsong_sum, reportDataList.size());
-            int yali_effectiveness = getLadar(yali_front, yali_later, yali_difference, yali_sum, reportDataList.size());
-            int qingxu_effectiveness = getLadar(qingxu_front, qingxu_later, qingxu_difference, qingxu_sum, reportDataList.size());
-            int pilao_effectiveness = getLadar(pilao_front, pilao_later, pilao_difference, pilao_sum, reportDataList.size());
+            if (qingxu_effectiveness>90){
+                qingxu_effectiveness=90;
+            }
+            if (qingxu_effectiveness<20){
+                qingxu_effectiveness=20;
+            }
+
+            if (pilao_effectiveness>90){
+                pilao_effectiveness=90;
+            }
+            if (pilao_effectiveness<20){
+                pilao_effectiveness=20;
+            }
+
+//            int report_dirll_score = (int) ((zhuanzhu_centre[0] * 0.4) + (fangsong_centre[0] * 0.6));
+//            int report_mind_score = (int) ((zhuanzhu_effectiveness * 0.4) + (fangsong_effectiveness * 0.6));
 
 
-            int report_dirll_score = (int) ((zhuanzhu_centre[0] * 0.4) + (fangsong_centre[0] * 0.6));
-            int report_mind_score = (int) ((zhuanzhu_effectiveness * 0.4) + (fangsong_effectiveness * 0.6));
-
-
-//            int report_dirll_score = (int) ((zhuanzhu_centre[0] * 0.3) + (fangsong_centre[0] * 0.4) + (qingxu_centre[0] * 0.1) + (yali_centre[0] * 0.1) + (pilao_centre[0] * 0.1));
-//            int report_mind_score = (int) ((zhuanzhu_effectiveness * 0.3) + (fangsong_effectiveness * 0.4) + (qingxu_effectiveness * 0.1) + (yali_effectiveness * 0.1) + (pilao_effectiveness * 0.1));
+            int report_dirll_score = (int) ((zhuanzhu_centre[0] * 0.3) + (fangsong_centre[0] * 0.4) + (qingxu_centre[0] * 0.1) + (yali_centre[0] * 0.1) + (pilao_centre[0] * 0.1));
+            int report_mind_score = (int) ((zhuanzhu_effectiveness * 0.3) + (fangsong_effectiveness * 0.4) + (qingxu_effectiveness * 0.1) + (yali_effectiveness * 0.1) + (pilao_effectiveness * 0.1));
 
             reportDataDao.insertAll(new ReportData(reportId,
                     LoginActivity.Companion.getUid(),
@@ -816,19 +739,20 @@ public class TrainingFragment2 extends Fragment {
     }
 
     /**
-     * @param front             前测
-     * @param later             后测
-     * @param averageDifference 平均差
-     * @param size
+     * @param front 前测
+     * @param later 后测
      */
-    private int getLadar(int[] front, int[] later, int averageDifference, int sum, int size) {
-        int i1 = later[1] - front[1];
-
-        double sqrt = Math.sqrt((i1 * i1 + sum) / (size + 1));
-
-        double v = ((i1 - averageDifference) / sqrt) * 10 + 65;
-
-        return (int) v;
+    private int getLadar(int[] front, int[] later, float sqrt, float sqrt2) {
+        int i1 = later[0] - front[0];
+        Log.e(TAG, ":getLadar: ____________________________");
+        Log.e(TAG, ":getLadar: " + later[0] + "-" + front[0] + "=" + i1 + "  ");
+//        double sqrt = Math.sqrt(i1 * i1 );
+        double v = ((i1 - sqrt) / sqrt2) * 10 + 65;
+        int i = new Double(v).intValue();
+        if (i > 100) {
+            i = 100;
+        }
+        return i;
     }
 
 
@@ -862,47 +786,46 @@ public class TrainingFragment2 extends Fragment {
         differenceSum = differenceSum / radarChartDataList.size();
 
         //开方平均差值
-        int sqrt = (int) Math.sqrt(differenceSum);
+        double sqrt = Math.sqrt(differenceSum);
         Log.e(TAG, "平均值: " + sumNum);
         Log.e(TAG, "开方平均差值: " + sqrt);
         Log.e(TAG, "average2: " + average2);
-        float z = ((sumNum - average) / average2) * 10 + 65;
+        float z = (float) (((sumNum - average) / average2) * 10 + 65);
         Log.e(TAG, "z: " + z);
-        int[] sum = {(int) z, sumNum, sqrt};
+        int[] sum = {(int) z, sumNum, (int) sqrt};
         return sum;
     }
 
-    private int[] getSum2(List<RadarChartData> radarChartDataList, int average, float average2, String title) {
+    private int[] getSum2(List<RadarChartData> radarChartDataList, int average, float average2, String title, List<RadarChartData> byMonth) {
         if (radarChartDataList.isEmpty()) {
             int[] sum = {0, 0, 0};
             return sum;
         }
         float sumNum = 0;
-        for (int i = 0; i < radarChartDataList.size(); i++) {
-            sumNum = sumNum + radarChartDataList.get(i).getNum2();
+        for (int i = 0; i < byMonth.size(); i++) {
+            sumNum = sumNum + byMonth.get(i).getNum2();
         }
         //平均值
-        sumNum = sumNum / radarChartDataList.size();
-
+        sumNum = sumNum / byMonth.size();
+        float sumNum2 = 0;
         float differenceSum = 0;
         for (int i = 0; i < radarChartDataList.size(); i++) {
-            Integer numThem = radarChartDataList.get(i).getNum();
-            if (sumNum > numThem) {
-                differenceSum = differenceSum + ((sumNum - numThem) * (sumNum - numThem));
-            } else {
-                differenceSum = differenceSum + ((numThem - sumNum) * (numThem - sumNum));
-            }
+            sumNum2 = sumNum2 + radarChartDataList.get(i).getNum2();
+            float numThem = radarChartDataList.get(i).getNum2();
+            differenceSum = differenceSum + ((sumNum - numThem) * (sumNum - numThem));
         }
+        sumNum2 = sumNum2 / radarChartDataList.size();
+
         differenceSum = differenceSum / radarChartDataList.size();
 
+        Log.e(TAG, title + ": " + differenceSum);
         //开方平均差值
-        int sqrt = (int) Math.sqrt(differenceSum);
-        Log.e(TAG, title + ":平均值: " + sumNum);
-        Log.e(TAG, title + ":开方平均差值: " + sqrt);
-        Log.e(TAG, title + ":average2: " + average2);
-        float z = ((sumNum - average) / average2) * 10 + 65;
+        double sqrt = Math.sqrt(differenceSum);
+        Log.e(TAG, title + ":平均值: " + sumNum + "-" + average + "   " + sumNum2 + ":开方平均差值: " + sqrt + ":average2: " + average2);
+        int z = (int) (((sumNum2 - average) / average2) * 10 + 65);
         Log.e(TAG, "z: " + z);
-        int[] sum = {(int) z, (int) sumNum, sqrt};
+        int sunz = Math.abs(z);
+        int[] sum = {sunz, (int) sumNum2, (int) sqrt};
         return sum;
     }
 
@@ -958,10 +881,21 @@ public class TrainingFragment2 extends Fragment {
                     iv_training.setVisibility(View.GONE);
                     isplay = true;
                 case 2:
+                    new Thread(() -> {
+                        try {
+                            Thread.sleep(3000);
+                            HomeJavcActivity.fitnessTracker.clearDataCommand();
+                            Thread.sleep(3000);
+                            HomeJavcActivity.fitnessTracker.setTimeCommand((int) (System.currentTimeMillis() / 1000));
+                            Thread.sleep(3000);
+                            HomeJavcActivity.fitnessTracker.setMonitorCommand(true);
+                        } catch (Exception e) {
+                            throw new RuntimeException(e);
+                        }
+                    }).start();
                     if (mediaPlayer == null) {
                         setPlay();
                     }
-
                     iv_training_play.setImageResource(R.mipmap.icon_pause3);
                     mediaPlayer.setDisplay(holder);
                     btTraining1.setVisibility(View.GONE);
@@ -1039,45 +973,6 @@ public class TrainingFragment2 extends Fragment {
         }
     }
 
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        Log.e(TAG, "手环: onResume" );
-//        HomeJavcActivity.fitnessTracker.setTimeCommand((int) (System.currentTimeMillis() / 1000));
-//        HomeJavcActivity.fitnessTracker.getBodyStateCommand(new Callback<BodyStateData[]>() {
-//            @Override
-//            public void onSuccess(BodyStateData[] result) {
-//                if (result != null) {
-//                    Log.e(TAG, "手环: " + result.length);
-//                    for (int i = 0; i < result.length; i++) {
-//                        String ymdhms = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(result[i].getTimestamp());
-//                        Log.e(TAG, "手环心率: " + result[i].getHeartRate()
-//                                + "  hrv: " + result[i].getHrv()
-//                                + "  血氧: " + result[i].getBloodOxygen()
-//                                + "  压力: " + result[i].getStress()
-//                                + "  情绪: " + result[i].getEmotion()
-//                                + "  疲劳: " + result[i].getFatigue()
-//                                + "  时间: " + ymdhms);
-//                    }
-//                }
-////                HomeJavcActivity.fitnessTracker.clearDataCommand();
-//            }
-//
-//            @Override
-//            public void onFailed(String error) {
-//                Log.e(TAG, "onFailed: " + error);
-//            }
-//        });
-
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-
-    }
-
     @Override
     public void onStop() {
         super.onStop();
@@ -1093,9 +988,10 @@ public class TrainingFragment2 extends Fragment {
             mediaPlayer.release();
             mediaPlayer = null;
         }
-        if (stopWindow!=null){
+        if (stopWindow != null) {
             stopWindow.dismiss();
         }
+//        HomeJavcActivity.bleHelper.disconnect();
         isplay = false;
         Date nowDate = TimeUtils.getNowDate();
         Calendar calendar = Calendar.getInstance();
@@ -1135,16 +1031,15 @@ public class TrainingFragment2 extends Fragment {
 
                         if (current > (duration - 1000)) {
                             mediaPlayer.pause();
-                            if (current / 1000 > 300) {
+                            if (current / 1000 > 360) {
                                 stopPopup();
                             } else {
-                                freeTraining("正式训练未满五分钟，未能生成报告", 3);
+                                freeTraining("正式训练未满六分钟，未能生成报告", 3);
                             }
                         }
                     }
                     break;
                 case 10012:
-//                    holder = pvTraining.getHolder();
                     if (mediaPlayer == null) {
                         setPlay();
                     }
@@ -1184,10 +1079,10 @@ public class TrainingFragment2 extends Fragment {
         if (event.isStop()) {
             iv_training_play.setImageResource(R.mipmap.icon_training_play);
             if (drillType == 2) {
-                if (number > 300) {
+                if (number > 360) {
                     stopPopup();
                 } else {
-                    freeTraining("正式训练未满五分钟，未能生成报告", 3);
+                    freeTraining("正式训练未满六分钟，未能生成报告", 3);
                 }
             } else {
                 if (mediaPlayer != null) {
@@ -1200,13 +1095,10 @@ public class TrainingFragment2 extends Fragment {
                 isplay = false;
             }
         } else {
-
             handler.sendEmptyMessage(10012);
         }
 
-
     }
-
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onMessageEvent(PlayEvent event) {
@@ -1219,7 +1111,7 @@ public class TrainingFragment2 extends Fragment {
                 mediaPlayer.setDisplay(holder);
                 mediaPlayer.start();
             }
-            if (event.getType()==1){
+            if (event.getType() == 1) {
                 if (mediaPlayer != null) {
                     mediaPlayer.seekTo(0);
                     mediaPlayer.pause();
@@ -1234,7 +1126,6 @@ public class TrainingFragment2 extends Fragment {
         }
 
     }
-
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onMessageEvent(MessageEvent event) {

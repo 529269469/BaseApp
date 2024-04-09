@@ -4,6 +4,7 @@ import android.content.Intent
 import android.content.res.ColorStateList
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.app.AlertDialog
 import androidx.core.widget.addTextChangedListener
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.GridLayoutManager
@@ -148,6 +149,32 @@ class RelaxFragment :
             bundle.putString("video_path", list[position].video_path)
             Navigation.findNavController(v)
                 .navigate(R.id.action_RelaxFragment_to_trainingFragment2, bundle)
+        }
+
+        relaxAdapter?.setOnItemLongClickListener { adapter, view, position ->
+            val builder = AlertDialog.Builder(requireActivity())
+            builder.setTitle("提示")
+            builder.setMessage("是否删除此视频")
+            builder.setPositiveButton("确定") { dialog, which ->
+                val db = Room.databaseBuilder(
+                    requireActivity(),
+                    AppDatabase::class.java, "users_dp"
+                ).build()
+                Thread {
+                    val videoDataDao = db.videoDataDao()
+                    videoDataDao.delete(list[position])
+                    list.removeAt(position)
+                    activity?.runOnUiThread {
+                        relaxAdapter?.setList(list)
+                    }
+                }.start()
+            }
+            builder.setNegativeButton("取消") { dialog, which ->
+
+            }
+            val dialog = builder.create()
+            dialog.show()
+           return@setOnItemLongClickListener true
         }
 
         bind.rvRelax.addItemDecoration(SpacesItemDecoration(10))

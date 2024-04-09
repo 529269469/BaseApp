@@ -81,10 +81,22 @@ import java.util.Locale;
 
 public class HomeJavcActivity extends AppCompatActivity {
 
+//    private String bleId="2031158408";
+//    private String egoId="AC:9A:22:A1:42:9D";
+
+
+    //设备1
+//    private String bleId="2036008072";
+//    private String egoId="B8:7C:6F:B7:9E:28";
+
+    //设备2
+    private String bleId="2044069000";
+    private String egoId="B8:7C:6F:B7:9D:EF";
+
     private ActivityHomeBinding bind;
 
-//    public static BleHelper bleHelper;
-//    public static FitnessTrackerModel fitnessTracker;
+    public static BleHelper bleHelper;
+    public static FitnessTrackerModel fitnessTracker;
     private String TAG = "TAG";
 
     @Override
@@ -96,57 +108,12 @@ public class HomeJavcActivity extends AppCompatActivity {
         initView();
         initData();
 
-//        bleHelper = new BleHelper(this);
-//        //获取手环
-//        fitnessTracker = bleHelper.getFitnessTracker();
-//
-//        //添加ble状态回调
-//        bleHelper.setBleCallback(new BleCallback() {
-//            @Override
-//            public void connectCallback() {
-//                Log.e(TAG, "手环:手环连接成功 ");
-//                new Thread(() -> {
-//                    try {
-//                        Thread.sleep(3000);
-//                        fitnessTracker.clearDataCommand();
-//                        Thread.sleep(3000);
-//                        fitnessTracker.setTimeCommand((int) (System.currentTimeMillis() / 1000));
-//                        Thread.sleep(3000);
-//                        fitnessTracker.setMonitorCommand(true);
-//                    } catch (Exception e) {
-//                        throw new RuntimeException(e);
-//                    }
-//                }).start();
-//
-//
-//                fitnessTracker.getBatteryLevel(new Callback<Integer>() {
-//                    @Override
-//                    public void onSuccess(Integer integer) {
-//                        Log.e(TAG, "time: " + integer);
-//                    }
-//
-//                    @Override
-//                    public void onFailed(String s) {
-//
-//                    }
-//                });
-//            }
-//
-//            @Override
-//            public void disConnectCallback() {
-//                Log.e(TAG, "手环:disConnectCallback ");
-//                bleHelper.connect();
-//            }
-//
-//            @Override
-//            public void connectFailCallback(String s) {
-//                Log.e(TAG, "手环:connectFailCallback ");
-//                bleHelper.connect();
-//            }
-//        });
-//        //连接
-//        bleHelper.connect();
-
+        try {
+            String packageName = getPackageManager().getPackageInfo(getPackageName(), 0).versionName;
+            bind.tvHomePackageName.setText(packageName);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
 
     }
 
@@ -353,11 +320,66 @@ public class HomeJavcActivity extends AppCompatActivity {
             bleDevice.RegistHandle(handler, "activity");
             egoXDevice.SetAutoConn(true);
             handler.removeCallbacks(onCallDelayCallBack);
-
             JSONArray jsonArray = egoXDevice.GetBindList();
             Log.e("TAG", "绑定的设备列表:" + (jsonArray == null ? "-111" :
                     jsonArray.toString()));
             bleDevice.StartScan(5, 2, CusoftUtil.SCAN_MODE_BALANCED);
+
+
+            bleHelper = new BleHelper(this);
+            //获取手环
+            fitnessTracker = bleHelper.getFitnessTracker();
+            //添加ble状态回调
+
+            bleHelper.setBleCallback(new BleCallback() {
+                @Override
+                public void connectCallback() {
+                    Log.e(TAG, "手环:手环连接成功 ");
+                    new Thread(() -> {
+                        try {
+                            Thread.sleep(3000);
+                            fitnessTracker.clearDataCommand();
+                            Thread.sleep(3000);
+                            fitnessTracker.setTimeCommand((int) (System.currentTimeMillis() / 1000));
+                            Thread.sleep(3000);
+                            fitnessTracker.setMonitorCommand(true);
+                        } catch (Exception e) {
+                            throw new RuntimeException(e);
+                        }
+                    }).start();
+
+                    fitnessTracker.getBatteryLevel(new Callback<Integer>() {
+                        @Override
+                        public void onSuccess(Integer integer) {
+                            Log.e(TAG, "time: " + integer);
+
+
+                                bind.tvHomeBracelet.setText("手环电量:"+integer);
+                        }
+
+                        @Override
+                        public void onFailed(String s) {
+
+                        }
+                    });
+                }
+
+                @Override
+                public void disConnectCallback() {
+                    Log.e(TAG, "手环:disConnectCallback ");
+                    bleHelper.connect(bleId);
+                }
+
+                @Override
+                public void connectFailCallback(String s) {
+                    Log.e(TAG, "手环:connectFailCallback "+s);
+                    bleHelper.connect(bleId);
+                }
+            });
+            //连接
+            bleHelper.connect(bleId);
+
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -437,9 +459,8 @@ public class HomeJavcActivity extends AppCompatActivity {
                     break;
                 case EgoXConfig.CUSOFT_MSG_EGOX_LIST: // 扫描结果
                     Log.e("TAG", "扫描到的设备信息:" + cusoftModel.getDevice().getName() + "  地址:" + cusoftModel.getDevice().getAddress());
-                    if ("EGO_X BLE".equals(cusoftModel.getDevice().getName())) {
+                    if ("EGO_X BLE".equals(cusoftModel.getDevice().getName())&&egoId.equals(cusoftModel.getDevice().getAddress())) {
                         egoXDevice.Connect(cusoftModel.getStrDeviceAddress());
-
                     }
                     break;
                 case CusoftConfig.CUSOFT_MSG_BLE_CONN_STATUS: // 连接状态通知
@@ -493,7 +514,7 @@ public class HomeJavcActivity extends AppCompatActivity {
                         }
                     }
 
-                    Log.e("TAG", "脑电：专注：" + attention + "  放松：" + meditation);
+//                    Log.e("TAG", "脑电：专注：" + attention + "  放松：" + meditation);
                     int delta = egoxModel.getEegData().getDelta();
                     int theta = egoxModel.getEegData().getTheta();
                     int lowAlpha = egoxModel.getEegData().getLowAlpha();
@@ -566,3 +587,4 @@ public class HomeJavcActivity extends AppCompatActivity {
         return false;
     }
 }
+

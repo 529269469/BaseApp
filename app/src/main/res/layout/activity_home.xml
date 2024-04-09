@@ -14,7 +14,7 @@
         android:background="@color/white"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.HomeActivity">
+        tools:context=".ui.HomeJavcActivity">
 
 
         <RelativeLayout
@@ -78,14 +78,28 @@
 
             <ImageView
                 android:id="@+id/iv_home_after_sale"
-                android:src="@mipmap/icon_after_sale"
+                android:src="@mipmap/icon_after_sale2"
                 android:layout_below="@id/rvHomeCatalog"
-                android:layout_marginTop="70dp"
+                android:layout_marginTop="50dp"
                 android:layout_centerHorizontal="true"
                 android:layout_width="131dp"
                 android:layout_height="143dp"/>
 
-
+            <TextView
+                android:gravity="center"
+                android:text="手环未连接"
+                android:id="@+id/tv_home_bracelet"
+                android:layout_marginTop="10dp"
+                android:layout_below="@id/iv_home_after_sale"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:gravity="center"
+                android:text=""
+                android:id="@+id/tv_home_packageName"
+                android:layout_below="@id/tv_home_bracelet"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
         </RelativeLayout>
 
         <fragment

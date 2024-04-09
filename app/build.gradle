@@ -13,8 +13,8 @@ android {
         applicationId "com.example.psychology"
         minSdk 23
         targetSdk 32
-        versionCode 1
-        versionName "1.0"
+        versionCode 2
+        versionName "1.02"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
@@ -110,6 +110,7 @@ dependencies {
 
     //recyclerview适配器
     implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.10'
+
     //下拉刷新上拉加载
     implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0'
 
